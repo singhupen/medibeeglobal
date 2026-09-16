@@ -7,8 +7,8 @@ export const themeConfig = {
   brand: {
     name: 'Medibee',
     fullName: 'Medibee Global',
-    tagline: 'Healthcare, Connected.',
-    description: 'Cross-border medical care coordination for Cambodian patients seeking trusted treatment in India.',
+    tagline: 'Our Vision, Your Care.',
+    description: "We're building a trusted healthcare journey platform that connects Cambodian patients with India's leading hospitals.",
     logo: {
       src: '/logo-transparent.png',
       light: '/logo-transparent.png',

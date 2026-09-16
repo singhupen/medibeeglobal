@@ -24,12 +24,12 @@ export default function Hero({ onSubmitCase }: HeroProps) {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-              Healthcare,{' '}
-              <span className="text-accent-400">Connected.</span>
+              Our Vision,<br />
+              <span className="text-accent-400">Your Care.</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Cross-border medical care coordination for Cambodian patients seeking trusted treatment in India — with care, clarity, and confidence.
+              We&apos;re building a trusted healthcare journey platform that connects Cambodian patients with India&apos;s leading hospitals — making cross-border treatment easier, safer, and fully coordinated, from first consultation to recovery back home.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

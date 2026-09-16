@@ -41,7 +41,7 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
               />
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Healthcare, Connected. Cross-border medical care coordination for Cambodian patients seeking trusted treatment in India.
+              Our Vision, Your Care. A trusted healthcare journey platform connecting Cambodian patients with India&apos;s leading hospitals.
             </p>
             <div className="flex gap-3">
               <a
