@@ -7,14 +7,14 @@ export interface CrossIconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 /**
- * Medibee Brand Medical Cross Icon
+ * Medibeeglobal Brand Medical Cross Icon
  * Features a smooth diagonal gradient from Teal/Cyan (#2FB6A6) on top-left
  * to Sky Blue (#3A8FCE) on bottom-right matching the official logo mark.
  */
 export default function CrossIcon({
   size = 20,
   className = '',
-  id = 'medibee-cross-grad',
+  id = 'medibeeglobal-cross-grad',
   ...props
 }: CrossIconProps) {
   return (

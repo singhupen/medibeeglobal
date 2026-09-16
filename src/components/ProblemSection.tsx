@@ -10,7 +10,7 @@ export default function ProblemSection() {
             Getting treatment abroad shouldn't be this hard
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
-            Cambodian families seeking medical care in India face real obstacles. Medibee exists to remove them.
+            Cambodian families seeking medical care in India face real obstacles. Medibeeglobal exists to remove them.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ export default function ProblemSection() {
 
         <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-3 bg-primary-50 rounded-full px-6 py-3">
-            <span className="text-primary-700 font-semibold">Medibee solves all three — and more.</span>
+            <span className="text-primary-700 font-semibold">Medibeeglobal solves all three — and more.</span>
           </div>
         </div>
       </div>

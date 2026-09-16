@@ -52,7 +52,7 @@ export default function VisionCards() {
             Vision & Strategy
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-3 mb-3">
-            Why We Are Building Medibee
+            Why We Are Building Medibeeglobal
           </h2>
           <p className="text-gray-500 text-base sm:text-lg leading-relaxed">
             Addressing real patient hurdles with a transparent, coordinated healthcare bridge.
@@ -96,7 +96,7 @@ export default function VisionCards() {
                 <div className="pt-6 mt-6 border-t border-gray-50 flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-accent-500" />
                   <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                    Medibee Core Pillar
+                    Medibeeglobal Core Pillar
                   </span>
                 </div>
               </div>

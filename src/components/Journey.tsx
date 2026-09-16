@@ -15,7 +15,7 @@ export default function Journey() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-12">
-          <span className="text-accent-400 font-bold text-sm uppercase tracking-wider">The Medibee Journey</span>
+          <span className="text-accent-400 font-bold text-sm uppercase tracking-wider">The Medibeeglobal Journey</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-4">
             Your 6-Step Path to Care
           </h2>

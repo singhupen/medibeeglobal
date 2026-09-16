@@ -108,7 +108,7 @@ export const journeySteps: JourneyStep[] = [
     title: "Patient Discussion",
     short: "Initial consultation to understand your needs.",
     detail:
-      "A Medibee case manager speaks with you and your family to understand your medical condition, history, treatment goals, and personal preferences. We listen first, then advise.",
+      "A Medibeeglobal case manager speaks with you and your family to understand your medical condition, history, treatment goals, and personal preferences. We listen first, then advise.",
   },
   {
     icon: Stethoscope,
@@ -238,7 +238,7 @@ export const testimonials: Testimonial[] = [
     city: "Phnom Penh",
     treatment: "Cardiac Surgery (CABG)",
     quote:
-      "Medibee made the whole process feel safe. From the first call to my follow-up after returning home, I always had someone to talk to. The doctors in India were excellent and my case manager explained everything in Khmer.",
+      "Medibeeglobal made the whole process feel safe. From the first call to my follow-up after returning home, I always had someone to talk to. The doctors in India were excellent and my case manager explained everything in Khmer.",
     photo:
       "https://images.pexels.com/photos/698532/pexels-photo-698532.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
@@ -247,7 +247,7 @@ export const testimonials: Testimonial[] = [
     city: "Siem Reap",
     treatment: "Knee Replacement",
     quote:
-      "I was scared about going to India alone. Medibee arranged everything — visa, flights, hotel for my wife, and a Khmer interpreter at the hospital. I felt supported the entire time. My knee is better than ever.",
+      "I was scared about going to India alone. Medibeeglobal arranged everything — visa, flights, hotel for my wife, and a Khmer interpreter at the hospital. I felt supported the entire time. My knee is better than ever.",
     photo:
       "https://images.pexels.com/photos/20782648/pexels-photo-20782648.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },
@@ -256,7 +256,7 @@ export const testimonials: Testimonial[] = [
     city: "Battambang",
     treatment: "Fertility Treatment (IVF)",
     quote:
-      "After years of trying, Medibee connected us with an amazing fertility specialist in Bangalore. The cost was a fraction of what we were quoted elsewhere. We are now proud parents of twin girls. Forever grateful.",
+      "After years of trying, Medibeeglobal connected us with an amazing fertility specialist in Bangalore. The cost was a fraction of what we were quoted elsewhere. We are now proud parents of twin girls. Forever grateful.",
     photo:
       "https://images.pexels.com/photos/18671527/pexels-photo-18671527.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
   },

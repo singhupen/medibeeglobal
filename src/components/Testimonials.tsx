@@ -11,7 +11,7 @@ export default function Testimonials() {
             What Our Patients Say
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
-            Real Cambodian families who trusted Medibee with their healthcare journey.
+            Real Cambodian families who trusted Medibeeglobal with their healthcare journey.
           </p>
         </div>
 

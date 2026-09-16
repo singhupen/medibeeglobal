@@ -5,8 +5,8 @@ import ProblemSection from '@/components/ProblemSection';
 import CrossIcon from '@/components/CrossIcon';
 
 export const metadata: Metadata = {
-  title: 'About Us — Medibee',
-  description: 'Learn why Medibee was founded: solving medical travel fragmentation, language barriers, and lack of follow-up for Cambodian patients seeking healthcare in India.',
+  title: 'About Us — Medibeeglobal',
+  description: 'Learn why Medibeeglobal was founded: solving medical travel fragmentation, language barriers, and lack of follow-up for Cambodian patients seeking healthcare in India.',
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-5">
             <CrossIcon size={16} />
-            <span className="text-white/90 text-sm font-medium">About Medibee</span>
+            <span className="text-white/90 text-sm font-medium">About Medibeeglobal</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mt-2 mb-5 leading-tight">
             Bridging Families to{' '}

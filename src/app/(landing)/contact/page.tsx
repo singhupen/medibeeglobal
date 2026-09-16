@@ -59,8 +59,9 @@ export default function ContactPage() {
                   <div>
                     <p className="font-bold text-gray-900">Head Office</p>
                     <p className="text-gray-500 text-sm mt-1 leading-relaxed">
-                      Sangkat Wat Phnom,<br />
-                      Khan Daun Penh, Phnom Penh, Cambodia
+                      #111, St. 09B, Thmorda Village,<br />
+                      Sangkat Kontouk, Khan Kombol,<br />
+                      Phnom Penh, Cambodia
                     </p>
                   </div>
                 </div>
@@ -71,8 +72,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900">Direct Phone Line</p>
-                    <a href="tel:+855235550199" className="text-primary-600 font-semibold text-sm hover:underline mt-1 block">
-                      +855 23 555 0199
+                    <a href="tel:+855010707404" className="text-primary-600 font-semibold text-sm hover:underline mt-1 block">
+                      +855-010707404
                     </a>
                     <p className="text-xs text-gray-400 mt-0.5">Khmer, English & Chinese spoken</p>
                   </div>
@@ -84,8 +85,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900">Email Inquiry</p>
-                    <a href="mailto:care@medibee.care" className="text-primary-600 font-semibold text-sm hover:underline mt-1 block">
-                      care@medibee.care
+                    <a href="mailto:care@medibeeglobal.com" className="text-primary-600 font-semibold text-sm hover:underline mt-1 block">
+                      care@medibeeglobal.com
                     </a>
                   </div>
                 </div>
@@ -154,7 +155,7 @@ export default function ContactPage() {
                     </div>
                     <h4 className="text-2xl font-bold text-gray-900 mb-2">Message Sent Successfully</h4>
                     <p className="text-gray-500 max-w-md mx-auto mb-6 text-sm">
-                      Thank you for contacting Medibee. A case manager will contact you shortly via phone or email.
+                      Thank you for contacting Medibeeglobal. A case manager will contact you shortly via phone or email.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}

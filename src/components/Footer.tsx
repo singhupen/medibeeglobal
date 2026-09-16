@@ -65,7 +65,7 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
                 <Send className="w-5 h-5" />
               </a>
               <a
-                href="mailto:care@medibee.care"
+                href="mailto:care@medibeeglobal.com"
                 className="w-10 h-10 rounded-xl bg-white/10 hover:bg-accent-400 hover:text-primary-950 flex items-center justify-center transition-colors"
                 aria-label="Email"
               >
@@ -97,15 +97,15 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3 text-white/60">
                 <MapPin className="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" />
-                <span>Sangkat Wat Phnom,<br />Khan Daun Penh, Phnom Penh, Cambodia</span>
+                <span>#111, St. 09B, Thmorda Village,<br />Sangkat Kontouk, Khan Kombol,<br />Phnom Penh, Cambodia</span>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Phone className="w-5 h-5 text-accent-400 flex-shrink-0" />
-                <a href="tel:+855235550199" className="hover:text-white transition-colors">+855 23 555 0199</a>
+                <a href="tel:+855010707404" className="hover:text-white transition-colors">+855-010707404</a>
               </li>
               <li className="flex items-center gap-3 text-white/60">
                 <Mail className="w-5 h-5 text-accent-400 flex-shrink-0" />
-                <a href="mailto:care@medibee.care" className="hover:text-white transition-colors">care@medibee.care</a>
+                <a href="mailto:care@medibeeglobal.com" className="hover:text-white transition-colors">care@medibeeglobal.com</a>
               </li>
             </ul>
           </div>
@@ -114,7 +114,7 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
           <div>
             <h4 className="font-bold text-white mb-5">Ready to Start?</h4>
             <p className="text-white/60 text-sm leading-relaxed mb-5">
-              Submit your medical inquiry today and a Medibee dedicated case manager will reach out within 24 hours.
+              Submit your medical inquiry today and a Medibeeglobal dedicated case manager will reach out within 24 hours.
             </p>
             <button
               onClick={handleCta}
@@ -130,13 +130,13 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
           <div className="flex items-start gap-3 mb-6">
             <ShieldCheck className="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" />
             <p className="text-white/50 text-sm leading-relaxed max-w-3xl">
-              <span className="font-semibold text-white/70">Disclaimer:</span> Medibee is an independent medical coordination platform and does not provide medical diagnosis or direct treatment. All medical assessments and treatments are delivered by licensed healthcare practitioners and partner hospitals.
+              <span className="font-semibold text-white/70">Disclaimer:</span> Medibeeglobal is an independent medical coordination platform and does not provide medical diagnosis or direct treatment. All medical assessments and treatments are delivered by licensed healthcare practitioners and partner hospitals.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10">
             <p className="text-white/40 text-sm">
-              © 2026 Medibee. All rights reserved.
+              © 2026 Medibeeglobal. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <Link href="/privacy" className="text-white/40 hover:text-white transition-colors">Privacy Policy</Link>

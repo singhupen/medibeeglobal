@@ -507,7 +507,7 @@ function ConfirmationScreen({ caseId, data, onClose }: { caseId: string; data: C
 
       <h3 className="text-2xl font-extrabold text-gray-900 mb-3">Thank You, {data.name}!</h3>
       <p className="text-gray-500 leading-relaxed max-w-md mx-auto mb-6">
-        Your case has been received. A Medibee case manager will contact you within 24 hours via{' '}
+        Your case has been received. A Medibeeglobal case manager will contact you within 24 hours via{' '}
         <span className="font-semibold text-primary-500">{data.contactPreference}</span>.
       </p>
 

@@ -1,22 +1,30 @@
 /**
- * Medibee Global Theme & Brand Configuration
+ * Medibeeglobal Theme & Brand Configuration
  * Centralized theme settings for branding, logos, and design tokens.
  */
 
 export const themeConfig = {
   brand: {
-    name: 'Medibee',
-    fullName: 'Medibee Global',
+    name: 'Medibeeglobal',
+    fullName: 'Medibeeglobal',
     tagline: 'Our Vision, Your Care.',
     description: "We're building a trusted healthcare journey platform that connects Cambodian patients with India's leading hospitals.",
     logo: {
       src: '/logo-transparent.png',
       light: '/logo-transparent.png',
       dark: '/logo-transparent.png',
-      alt: 'Medibee Global Logo',
+      alt: 'Medibeeglobal Logo',
       width: 1899,
       height: 420,
       aspectRatio: 4.52, // 1899 : 420
+    },
+    contact: {
+      phone: '+855-010707404',
+      phoneDisplay: '+855-010707404',
+      phoneTel: 'tel:+855010707404',
+      email: 'care@medibeeglobal.com',
+      emailMailto: 'mailto:care@medibeeglobal.com',
+      address: '#111, St. 09B, Thmorda Village, Sangkat Kontouk, Khan Kombol, Phnom Penh, Cambodia',
     },
   },
   colors: {

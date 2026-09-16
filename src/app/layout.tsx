@@ -3,12 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Medibee — Cross-Border Medical Care Coordination",
-    template: "%s | Medibee",
+    default: "Medibeeglobal",
+    template: "%s | Medibeeglobal",
   },
   description: "Cross-border medical care coordination for Cambodian patients seeking trusted, accredited medical treatment in India — with care, clarity, and confidence.",
   keywords: [
-    "Medibee",
+    "Medibeeglobal",
     "Medical care India",
     "Cambodia medical travel",
     "Cambodian patients in India",

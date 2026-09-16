@@ -7,7 +7,7 @@ export default function Services() {
         <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-12">
           <span className="text-accent-500 font-bold text-sm uppercase tracking-wider">Our Services</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mt-3 mb-4">
-            How Medibee Works for You
+            How Medibeeglobal Works for You
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed">
             A comprehensive coordination platform connecting patients, hospitals, and travel partners.
