@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ==========================================================================
+   Medibee Centralized Theme & Design System
+   All colors, shadows, and animations are configured here centrally.
+   Updating colors in this @theme block automatically updates the entire UI.
+   ========================================================================== */
+@theme {
+  /* Primary Palette - Deep Blue (#1B5FAE / #1C5FA8 for "Medi", "global", and globe icon) */
+  --color-primary-50: #edf5fd;
+  --color-primary-100: #d6e9fa;
+  --color-primary-200: #b0d5f5;
+  --color-primary-300: #7ebbee;
+  --color-primary-400: #4b9ee5;
+  --color-primary-500: #1b5fae; /* Deep Blue Brand Primary */
+  --color-primary-600: #164e91;
+  --color-primary-700: #133f76;
+  --color-primary-800: #113562;
+  --color-primary-900: #112e52;
+  --color-primary-950: #0b1c36;
+
+  /* Accent Palette - Lime / Leaf Green (#7AC143 / #7CB93D for "bee" and swoosh) */
+  --color-accent-50: #f4faf0;
+  --color-accent-100: #e5f5dc;
+  --color-accent-200: #cbedbd;
+  --color-accent-300: #a9e092;
+  --color-accent-400: #7ac143; /* Lime / Leaf Green Brand Accent */
+  --color-accent-500: #68a637;
+  --color-accent-600: #52852a;
+  --color-accent-700: #406723;
+  --color-accent-800: #355320;
+  --color-accent-900: #2d461e;
+  --color-accent-950: #14270c;
+
+  /* Gradient Accent Colors (Cross Icon: Teal/Cyan to Sky Blue) */
+  --color-cross-teal: #2fb6a6;
+  --color-cross-sky: #3a8fce;
+
+  /* Custom Elevation & Shadows */
+  --shadow-card: 0 10px 30px -5px rgba(27, 95, 174, 0.08), 0 4px 12px -2px rgba(27, 95, 174, 0.04);
+  --shadow-soft: 0 4px 20px -2px rgba(27, 95, 174, 0.06);
+  --shadow-blue: 0 10px 25px -5px rgba(27, 95, 174, 0.35);
+
+  /* Micro-animations */
+  --animate-fade-in: fadeIn 0.3s ease-in-out;
+  --animate-fade-in-up: fadeInUp 0.5s ease-out;
+
+  /* Brand Assets */
+  --brand-logo: url('/logo-transparent.png');
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Cross Shape & Brand Accent Gradient (Teal on top-left to Sky Blue on bottom-right) */
+.gradient-cross {
+  background: linear-gradient(135deg, #2fb6a6 0%, #3a8fce 100%);
+}
+
+.text-gradient-cross {
+  background: linear-gradient(135deg, #2fb6a6 0%, #3a8fce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
