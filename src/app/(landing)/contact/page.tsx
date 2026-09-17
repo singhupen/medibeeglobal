@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, RefreshCw } from 'lucide-react';
 import { useCaseModal } from '@/context/case-modal-context';
 
 export default function ContactPage() {
@@ -16,6 +16,29 @@ export default function ContactPage() {
     subject: '',
     message: '',
   });
+  const [captchaSvg, setCaptchaSvg] = useState('');
+  const [captchaText, setCaptchaText] = useState('');
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [isLoadingCaptcha, setIsLoadingCaptcha] = useState(false);
+
+  const fetchCaptcha = async () => {
+    setIsLoadingCaptcha(true);
+    try {
+      const res = await fetch('/api/captcha');
+      const data = await res.json();
+      setCaptchaSvg(data.svg);
+      setCaptchaText(data.text);
+      setCaptchaInput('');
+    } catch (error) {
+      console.error('Failed to fetch captcha', error);
+    } finally {
+      setIsLoadingCaptcha(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCaptcha();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +61,7 @@ export default function ContactPage() {
 
       setSubmitted(true);
       setForm({ name: '', phone: '', email: '', subject: '', message: '' });
+      fetchCaptcha();
     } catch {
       setSubmitError('Network error. Please check your connection and try again.');
     } finally {
@@ -223,10 +247,11 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Email Address
+                          Email Address *
                         </label>
                         <input
                           type="email"
+                          required
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
                           placeholder="sokha@example.com"
@@ -235,15 +260,24 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Treatment / Specialty Needed
+                          Treatment / Specialty Needed *
                         </label>
-                        <input
-                          type="text"
+                        <select
+                          required
                           value={form.subject}
                           onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                          placeholder="e.g. Heart Bypass, Knee Surgery, Cancer"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
-                        />
+                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm bg-white"
+                        >
+                          <option value="" disabled>Select a specialty...</option>
+                          <option value="Cardiology">Cardiology (Heart Bypass, etc)</option>
+                          <option value="Orthopedics">Orthopedics (Knee/Hip Surgery, etc)</option>
+                          <option value="Oncology">Oncology (Cancer Treatment)</option>
+                          <option value="Neurology">Neurology</option>
+                          <option value="Health Screening">Health Screening / Checkup</option>
+                          <option value="Fertility">Fertility / IVF</option>
+                          <option value="General Inquiry">General Medical Inquiry</option>
+                          <option value="Other">Other</option>
+                        </select>
                       </div>
                     </div>
 
@@ -261,6 +295,37 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                      <label className="block text-sm font-semibold text-gray-700 mb-3">
+                        Security Check *
+                      </label>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <div className="flex items-center gap-2">
+                          <div 
+                            className="bg-white rounded-lg border border-gray-200 overflow-hidden h-[50px] w-[150px] flex items-center justify-center"
+                            dangerouslySetInnerHTML={{ __html: captchaSvg }}
+                          />
+                          <button
+                            type="button"
+                            onClick={fetchCaptcha}
+                            disabled={isLoadingCaptcha}
+                            className="p-2 text-gray-500 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors cursor-pointer"
+                            aria-label="Refresh captcha"
+                          >
+                            <RefreshCw className={`w-5 h-5 ${isLoadingCaptcha ? 'animate-spin' : ''}`} />
+                          </button>
+                        </div>
+                        <input
+                          type="text"
+                          required
+                          value={captchaInput}
+                          onChange={(e) => setCaptchaInput(e.target.value)}
+                          placeholder="Enter the text above"
+                          className="w-full sm:w-auto flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+                        />
+                      </div>
+                    </div>
+
                     {submitError && (
                       <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
                         {submitError}
@@ -273,8 +338,17 @@ export default function ContactPage() {
                       </p>
                       <button
                         type="submit"
-                        disabled={submitting}
-                        className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white font-bold px-8 py-3.5 rounded-full shadow-soft hover:scale-105 transition-all cursor-pointer whitespace-nowrap disabled:opacity-50 disabled:hover:scale-100"
+                        disabled={
+                          submitting || 
+                          !form.name.trim() || 
+                          !form.phone.trim() || 
+                          !form.email.trim() || 
+                          !form.subject.trim() || 
+                          !form.message.trim() || 
+                          captchaInput.toLowerCase() !== captchaText.toLowerCase() || 
+                          captchaText === ''
+                        }
+                        className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white font-bold px-8 py-3.5 rounded-full shadow-soft hover:scale-105 transition-all cursor-pointer whitespace-nowrap disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
                       >
                         {submitting ? 'Sending...' : 'Send Inquiry'}
                       </button>
