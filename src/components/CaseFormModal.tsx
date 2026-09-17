@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { specialtyOptions, timelineOptions, contactOptions } from '@/lib/data';
 import Logo from '@/components/Logo';
 import {
@@ -13,6 +13,8 @@ import {
   Upload,
   AlertCircle,
   Sparkles,
+  RefreshCw,
+  ShieldCheck,
 } from 'lucide-react';
 
 export interface CaseFormData {
@@ -50,6 +52,54 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
   const [caseId, setCaseId] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  // CAPTCHA State
+  const [captchaSvg, setCaptchaSvg] = useState('');
+  const [captchaText, setCaptchaText] = useState('');
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [isLoadingCaptcha, setIsLoadingCaptcha] = useState(false);
+
+  const fetchCaptcha = async () => {
+    setIsLoadingCaptcha(true);
+    try {
+      const res = await fetch('/api/captcha');
+      const json = await res.json();
+      setCaptchaSvg(json.svg || '');
+      setCaptchaText(json.text || '');
+      setCaptchaInput('');
+    } catch (err) {
+      console.error('Failed to fetch captcha', err);
+    } finally {
+      setIsLoadingCaptcha(false);
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      fetchCaptcha();
+    }
+  }, [open]);
+
+  // Validation booleans for disabling Submit button
+  const isCaptchaValid = Boolean(
+    captchaText && captchaInput.trim().toLowerCase() === captchaText.toLowerCase()
+  );
+
+  const isAllRequiredFilled = Boolean(
+    data.name.trim() &&
+    data.age.trim() &&
+    !isNaN(Number(data.age)) &&
+    Number(data.age) >= 1 &&
+    Number(data.age) <= 120 &&
+    data.phone.trim() &&
+    data.city.trim() &&
+    data.specialty.trim() &&
+    data.details.trim() &&
+    data.timeline.trim() &&
+    data.contactPreference.trim()
+  );
+
+  const isSubmitDisabled = submitting || !isAllRequiredFilled || !isCaptchaValid;
 
   if (!open) return null;
 
@@ -94,6 +144,11 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
 
   const handleSubmit = async () => {
     if (!validateStep(3)) return;
+    if (!isCaptchaValid) {
+      setSubmitError('Please complete the security check correctly before submitting.');
+      return;
+    }
+
     setSubmitting(true);
     setSubmitError('');
 
@@ -101,13 +156,18 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
       const res = await fetch('/api/case-intake', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          captchaInput: captchaInput.trim(),
+          captchaExpected: captchaText,
+        }),
       });
 
       const result = await res.json();
 
       if (!res.ok) {
         setSubmitError(result.error || 'Something went wrong. Please try again.');
+        fetchCaptcha();
         return;
       }
 
@@ -127,6 +187,8 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
     setErrors({});
     setSubmitted(false);
     setCaseId('');
+    setSubmitError('');
+    setCaptchaInput('');
     onClose();
   };
 
@@ -460,6 +522,70 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
                     )}
                   </div>
 
+                  {/* Security Verification / CAPTCHA */}
+                  <div className="bg-primary-50/50 border border-primary-100 rounded-2xl p-4 sm:p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="flex items-center gap-2 text-sm font-bold text-gray-800">
+                        <ShieldCheck className="w-4 h-4 text-primary-600" />
+                        Security Verification <span className="text-red-500">*</span>
+                      </label>
+                      {isCaptchaValid && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-accent-700 bg-accent-100 border border-accent-300 px-2.5 py-0.5 rounded-full animate-fade-in">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-accent-600" />
+                          Verified
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-500 mb-3">
+                      Please enter the 5 characters shown below to confirm you are human.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <div
+                          className="bg-white rounded-xl border border-gray-200 overflow-hidden h-[48px] w-[140px] flex items-center justify-center shadow-xs select-none"
+                          dangerouslySetInnerHTML={{ __html: captchaSvg }}
+                        />
+                        <button
+                          type="button"
+                          onClick={fetchCaptcha}
+                          disabled={isLoadingCaptcha}
+                          className="h-[48px] w-[48px] rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-600 hover:text-primary-600 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50"
+                          title="Refresh security code"
+                          aria-label="Refresh captcha"
+                        >
+                          <RefreshCw className={`w-4 h-4 ${isLoadingCaptcha ? 'animate-spin text-primary-600' : ''}`} />
+                        </button>
+                      </div>
+
+                      <div className="flex-1 relative">
+                        <input
+                          type="text"
+                          value={captchaInput}
+                          onChange={(e) => setCaptchaInput(e.target.value)}
+                          placeholder="Type code here"
+                          maxLength={8}
+                          className={`w-full h-[48px] px-4 rounded-xl border font-mono uppercase tracking-widest text-base ${
+                            isCaptchaValid
+                              ? 'border-accent-500 ring-2 ring-accent-100 bg-accent-50/30 text-accent-950 font-bold'
+                              : captchaInput.length > 0
+                              ? 'border-amber-400 bg-white text-gray-900'
+                              : 'border-gray-200 bg-white text-gray-900'
+                          } focus:border-primary-500 focus:ring-2 focus:ring-primary-100 outline-none transition-all`}
+                        />
+                        {isCaptchaValid && (
+                          <CheckCircle2 className="w-5 h-5 text-accent-600 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        )}
+                      </div>
+                    </div>
+
+                    {!isCaptchaValid && captchaInput.length > 0 && (
+                      <p className="text-xs text-amber-600 mt-2 flex items-center gap-1 font-medium">
+                        Code does not match yet. Check letters/numbers or click refresh for a new code.
+                      </p>
+                    )}
+                  </div>
+
                   {/* Summary */}
                   <div className="bg-gray-50 rounded-2xl p-5 space-y-2">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Case Summary</p>
@@ -501,12 +627,33 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
                   </button>
                 ) : (
                   <button
+                    type="button"
                     onClick={handleSubmit}
-                    disabled={submitting}
-                    className="inline-flex items-center gap-1.5 bg-accent-400 hover:bg-accent-500 text-primary-950 font-bold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg disabled:opacity-50"
+                    disabled={isSubmitDisabled}
+                    title={
+                      isSubmitDisabled
+                        ? !isAllRequiredFilled
+                          ? 'Please fill in all required case details'
+                          : 'Please complete the security check to enable submission'
+                        : 'Submit your case'
+                    }
+                    className={`inline-flex items-center gap-2 font-bold text-sm px-7 py-3 rounded-full transition-all ${
+                      isSubmitDisabled
+                        ? 'bg-gray-200 text-gray-400 cursor-not-allowed opacity-60'
+                        : 'bg-accent-400 hover:bg-accent-500 text-primary-950 shadow-soft hover:shadow-lg hover:scale-105 cursor-pointer'
+                    }`}
                   >
-                    {submitting ? 'Submitting...' : 'Submit Case'}
-                    <CheckCircle2 className="w-4 h-4" />
+                    {submitting ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Case</span>
+                        <CheckCircle2 className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 )}
               </div>
