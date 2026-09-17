@@ -7,7 +7,7 @@ export default function PricingPage() {
   const { openCaseModal } = useCaseModal();
 
   return (
-    <div className="pt-16">
+    <div className="pt-24">
       <Pricing onSubmitCase={openCaseModal} />
     </div>
   );

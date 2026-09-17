@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function HospitalsPage() {
   return (
-    <div className="pt-16 bg-gray-50">
+    <div className="pt-24 bg-gray-50">
       <PartnerHospitals />
     </div>
   );

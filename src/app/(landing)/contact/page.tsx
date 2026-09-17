@@ -23,7 +23,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Header */}
-      <section className="bg-primary-500 text-white pt-20 pb-12 lg:pt-24 lg:pb-16 relative overflow-hidden">
+      <section className="bg-primary-500 text-white pt-24 pb-12 lg:pt-28 lg:pb-16 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <span className="text-accent-400 font-bold text-sm uppercase tracking-wider">

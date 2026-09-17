@@ -9,7 +9,7 @@ interface HeroProps {
 
 export default function Hero({ onSubmitCase }: HeroProps) {
   return (
-    <section id="home" className="relative bg-primary-500 overflow-hidden pt-20 pb-16 lg:pt-24 lg:pb-20">
+    <section id="home" className="relative bg-primary-500 overflow-hidden pt-26 pb-16 lg:pt-30 lg:pb-20">
       {/* Decorative shapes */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent-400/10 rounded-full blur-3xl translate-y-1/3" />

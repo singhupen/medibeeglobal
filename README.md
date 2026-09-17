@@ -88,6 +88,7 @@ medibeeg/
 │   │   ├── ProblemSection.tsx  # The 3 core healthcare challenges
 │   │   ├── Services.tsx        # Comprehensive service breakdown
 │   │   ├── Testimonials.tsx    # Patient stories & testimonials
+│   │   ├── TopBar.tsx          # Utility strip above navbar (email, phone & socials)
 │   │   ├── VisionCards.tsx     # 3-card Vision, Problem & Opportunity layout
 │   │   └── WhyIndia.tsx        # Specialties & medical cost comparison table
 │   ├── context/

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function HowItWorksPage() {
   return (
-    <div className="pt-16 bg-primary-950">
+    <div className="pt-24 bg-primary-950">
       <Journey />
     </div>
   );

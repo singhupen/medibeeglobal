@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useCaseModal } from '@/context/case-modal-context';
 import Logo from '@/components/Logo';
+import TopBar from '@/components/TopBar';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -30,14 +31,19 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-soft py-3'
-          : 'bg-white/90 backdrop-blur-md border-b border-gray-100 py-3'
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Top Bar Strip: Contact info on left, Social media on right */}
+      <TopBar />
+
+      {/* Main Navbar */}
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-soft py-2.5'
+            : 'bg-white/90 backdrop-blur-md border-b border-gray-100 py-3'
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Logo
           asLink
@@ -127,6 +133,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      </div>
     </header>
   );
 }
