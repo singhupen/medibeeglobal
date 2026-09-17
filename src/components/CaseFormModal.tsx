@@ -48,6 +48,8 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [caseId, setCaseId] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   if (!open) return null;
 
@@ -90,11 +92,33 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
     setStep(Math.max(0, step - 1));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateStep(3)) return;
-    const id = 'BL-' + Math.floor(100000 + Math.random() * 900000);
-    setCaseId(id);
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const res = await fetch('/api/case-intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setSubmitError(result.error || 'Something went wrong. Please try again.');
+        return;
+      }
+
+      // Case ID is generated server-side so it can't be spoofed on the client.
+      setCaseId(result.caseId);
+      setSubmitted(true);
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -449,6 +473,13 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
                 </div>
               )}
 
+              {/* Submission error */}
+              {step === 3 && submitError && (
+                <p className="text-red-500 text-sm mt-4 flex items-center gap-1.5 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" /> {submitError}
+                </p>
+              )}
+
               {/* Navigation buttons */}
               <div className="flex justify-between mt-8 pt-5 border-t border-gray-100">
                 <button
@@ -471,9 +502,10 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
                 ) : (
                   <button
                     onClick={handleSubmit}
-                    className="inline-flex items-center gap-1.5 bg-accent-400 hover:bg-accent-500 text-primary-950 font-bold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg"
+                    disabled={submitting}
+                    className="inline-flex items-center gap-1.5 bg-accent-400 hover:bg-accent-500 text-primary-950 font-bold text-sm px-6 py-3 rounded-full transition-all hover:shadow-lg disabled:opacity-50"
                   >
-                    Submit Case
+                    {submitting ? 'Submitting...' : 'Submit Case'}
                     <CheckCircle2 className="w-4 h-4" />
                   </button>
                 )}

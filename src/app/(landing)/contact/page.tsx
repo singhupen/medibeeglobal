@@ -7,6 +7,8 @@ import { useCaseModal } from '@/context/case-modal-context';
 export default function ContactPage() {
   const { openCaseModal } = useCaseModal();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -15,9 +17,32 @@ export default function ContactPage() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+        return;
+      }
+
+      setSubmitted(true);
+      setForm({ name: '', phone: '', email: '', subject: '', message: '' });
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -236,15 +261,22 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {submitError && (
+                      <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                        {submitError}
+                      </p>
+                    )}
+
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
                       <p className="text-xs text-gray-400">
                         🔒 All health information is kept strictly confidential under medical privacy standards.
                       </p>
                       <button
                         type="submit"
-                        className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white font-bold px-8 py-3.5 rounded-full shadow-soft hover:scale-105 transition-all cursor-pointer whitespace-nowrap"
+                        disabled={submitting}
+                        className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white font-bold px-8 py-3.5 rounded-full shadow-soft hover:scale-105 transition-all cursor-pointer whitespace-nowrap disabled:opacity-50 disabled:hover:scale-100"
                       >
-                        Send Inquiry
+                        {submitting ? 'Sending...' : 'Send Inquiry'}
                       </button>
                     </div>
                   </form>
