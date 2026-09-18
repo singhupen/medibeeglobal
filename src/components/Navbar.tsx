@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { useCaseModal } from '@/context/case-modal-context';
 import Logo from '@/components/Logo';
 import TopBar from '@/components/TopBar';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -77,6 +78,11 @@ export default function Navbar() {
           })}
         </div>
 
+        {/* Language Switcher (Desktop) */}
+        <div className="hidden lg:flex items-center">
+          <LanguageSwitcher />
+        </div>
+
         {/* Right Actions - Register button commented out for now */}
         {/* <div className="hidden lg:flex items-center gap-4">
           <button
@@ -118,6 +124,10 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* Language Switcher (Mobile) */}
+            <div className="pt-3 mt-2 border-t border-gray-100">
+              <LanguageSwitcher />
+            </div>
             {/* Register button commented out for now */}
             {/* <div className="pt-3 border-t border-gray-100">
               <button

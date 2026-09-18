@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleTranslate from "@/components/GoogleTranslate";
 
 export const metadata: Metadata = {
   title: {
@@ -27,6 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full scroll-smooth">
       <body className="min-h-full flex flex-col antialiased">
+        {/* Loads Google's translation engine; renders no visible UI itself */}
+        <GoogleTranslate />
         {children}
       </body>
     </html>

@@ -105,3 +105,37 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* ----------------------------------------------------------------
+   Google Website Translator overrides
+   We use our own dropdown (LanguageSwitcher.tsx) as the visible UI,
+   so Google's default banner/toolbar and iframe must stay hidden.
+   ---------------------------------------------------------------- */
+
+/* Google's translation banner at the very top of the page */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Google shifts <body> down to make room for its banner; undo that */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* The small Google balloon/tooltip that appears on translated text */
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide Google's own widget dropdown - we drive it programmatically
+   from our custom LanguageSwitcher button instead */
+#google_translate_element {
+  display: none !important;
+}
