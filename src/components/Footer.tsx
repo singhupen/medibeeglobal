@@ -127,9 +127,9 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
 
         {/* Disclaimer */}
         <div className="border-t border-white/10 pt-8">
-          <div className="flex items-start gap-3 mb-6">
+          <div className="flex items-start gap-2.5 sm:gap-3 mb-6 w-full">
             <ShieldCheck className="w-5 h-5 text-accent-400 flex-shrink-0 mt-0.5" />
-            <p className="text-white/50 text-sm leading-relaxed max-w-3xl">
+            <p className="text-white/50 text-xs sm:text-sm leading-relaxed flex-1 w-full">
               <span className="font-semibold text-white/70">Disclaimer:</span> Medibeeglobal is an independent medical coordination platform and does not provide medical diagnosis or direct treatment. All medical assessments and treatments are delivered by licensed healthcare practitioners and partner hospitals.
             </p>
           </div>
