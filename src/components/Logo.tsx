@@ -49,7 +49,11 @@ export default function Logo({
         height={height}
         priority={priority}
         className={`w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.03] ${imageClassName}`}
-        style={{ height: `${height}px`, width: 'auto' }}
+        style={{
+          height: `${height}px`,
+          width: 'auto',
+          aspectRatio: `${themeConfig.brand.logo.aspectRatio}`,
+        }}
       />
     </div>
   );

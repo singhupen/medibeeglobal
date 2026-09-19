@@ -49,28 +49,28 @@ export default function Navbar() {
             : 'bg-white/90 backdrop-blur-md border-b border-gray-100 py-2.5'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between flex-nowrap">
           {/* Logo */}
-          <div className="flex-shrink-0 -ml-6 sm:-ml-9 lg:-ml-12 mr-3 xl:mr-6">
+          <div className="flex-shrink-0 flex items-center mr-3 xl:mr-6">
             <Logo
               asLink
               href="/"
               variant="plain"
               priority
-              height={38}
+              height={36}
               onClick={() => setMobileOpen(false)}
             />
           </div>
 
-          {/* Desktop Navigation - All routes displayed one by one, non-collapsible, no horizontal scrolling */}
-          <div className="hidden lg:flex items-center justify-end flex-1 gap-1 xl:gap-2.5 2xl:gap-3.5">
+          {/* Desktop Navigation - All routes displayed on desktop viewports */}
+          <div className="hidden xl:flex items-center justify-end flex-1 gap-1.5 xl:gap-2.5 2xl:gap-3.5">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-xs xl:text-[13px] 2xl:text-sm font-semibold transition-all relative py-1 px-1.5 xl:px-2 rounded-lg whitespace-nowrap ${
+                  className={`text-xs xl:text-[13px] 2xl:text-sm font-semibold transition-all relative py-1 px-1.5 xl:px-2 2xl:px-2.5 rounded-lg whitespace-nowrap ${
                     isActive
                       ? 'text-primary-600 font-bold bg-primary-50/70'
                       : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
@@ -86,9 +86,9 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="flex items-center lg:hidden">
+          <div className="flex items-center xl:hidden">
             <button
-              className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -99,7 +99,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer - All routes listed one by one */}
         {mobileOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-card animate-fade-in max-h-[85vh] overflow-y-auto">
+          <div className="xl:hidden bg-white border-t border-gray-100 shadow-card animate-fade-in max-h-[85vh] overflow-y-auto">
             <div className="px-4 py-3 space-y-1">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
