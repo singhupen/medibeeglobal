@@ -51,7 +51,7 @@ export default function Navbar() {
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <div className="flex-shrink-0 mr-3 xl:mr-6">
+          <div className="flex-shrink-0 -ml-6 sm:-ml-9 lg:-ml-12 mr-3 xl:mr-6">
             <Logo
               asLink
               href="/"
