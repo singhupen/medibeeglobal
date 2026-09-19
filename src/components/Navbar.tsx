@@ -10,12 +10,12 @@ import TopBar from '@/components/TopBar';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
+  // { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Specialties', href: '/specialties' },
-  { label: 'Partner Hospitals', href: '/hospitals' },
-  { label: 'Pricing', href: '/pricing' },
+  // { label: 'How It Works', href: '/how-it-works' },
+  { label: 'Treatments', href: '/specialties' },
+  { label: 'Hospitals', href: '/hospitals' },
+  // { label: 'Pricing', href: '/pricing' },
   { label: 'Contact', href: '/contact' },
 ];
 
