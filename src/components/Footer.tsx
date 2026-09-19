@@ -7,11 +7,15 @@ import Logo from '@/components/Logo';
 
 const quickLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'Specialties', href: '/specialties' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Doctors & Specialists', href: '/doctors' },
   { label: 'Partner Hospitals', href: '/hospitals' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Treatments', href: '/specialties' },
+  { label: 'Medical Destinations', href: '/destinations' },
+  { label: 'Patient Journey', href: '/patient-journey' },
+  { label: 'Medical Visa', href: '/medical-visa' },
+  { label: 'Hotel & Travel', href: '/travel-assistance' },
+  { label: 'Patient Stories', href: '/testimonials' },
   { label: 'Contact', href: '/contact' },
 ];
 
