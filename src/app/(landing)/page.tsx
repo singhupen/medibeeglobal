@@ -2,6 +2,7 @@
 
 import Hero from '@/components/Hero';
 import VisionCards from '@/components/VisionCards';
+import Journey from '@/components/Journey';
 import { useCaseModal } from '@/context/case-modal-context';
 
 export default function LandingHomePage() {
@@ -11,6 +12,7 @@ export default function LandingHomePage() {
     <div className="flex-1">
       <Hero onSubmitCase={openCaseModal} />
       <VisionCards />
+      <Journey />
     </div>
   );
 }

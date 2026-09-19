@@ -40,7 +40,11 @@ function setLanguageCookie(langCode: string) {
   document.cookie = `${GOOGTRANS_COOKIE}=${value};path=/;domain=${window.location.hostname}`;
 }
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({
+  variant = 'default',
+}: {
+  variant?: 'default' | 'topbar';
+}) {
   const [open, setOpen] = useState(false);
   const [activeLang, setActiveLang] = useState('en');
   const containerRef = useRef<HTMLDivElement>(null);
@@ -92,19 +96,25 @@ export default function LanguageSwitcher() {
   const activeLabel =
     LANGUAGES.find((l) => l.code === activeLang)?.label || 'English';
 
+  const isTopbar = variant === 'topbar';
+
   return (
     <div ref={containerRef} className="relative notranslate">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 text-sm font-semibold text-gray-600 hover:text-primary-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+        className={
+          isTopbar
+            ? 'flex items-center gap-1.5 text-xs font-medium text-white/85 hover:text-accent-400 transition-colors px-2 py-1 rounded-md hover:bg-white/10 cursor-pointer'
+            : 'flex items-center gap-1.5 text-sm font-semibold text-gray-600 hover:text-primary-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50 cursor-pointer'
+        }
         aria-label="Change language"
       >
-        <Globe className="w-4 h-4" />
-        <span className="hidden sm:inline">{activeLabel}</span>
+        <Globe className={isTopbar ? 'w-3.5 h-3.5 text-accent-400' : 'w-4 h-4'} />
+        <span>{activeLabel}</span>
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-100 rounded-xl shadow-card py-2 z-50 max-h-80 overflow-y-auto">
+        <div className="absolute right-0 mt-1.5 w-52 bg-white border border-gray-100 rounded-xl shadow-card py-2 z-50 max-h-80 overflow-y-auto">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
