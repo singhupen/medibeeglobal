@@ -3,7 +3,7 @@ import PartnerHospitals from '@/components/PartnerHospitals';
 
 export const metadata: Metadata = {
   title: 'Partner Hospitals in India — Medibeeglobal Network',
-  description: 'View Medibeeglobal partner hospitals across India: Apollo, Fortis, AIIMS, Manipal, Narayana Health, and MIOT.',
+  description: 'View Medibeeglobal partner hospitals across India: Medanta, Gleneagles, Apollo, Fortis, Max, HCG, Kokilaben, Artemis, Rainbow Children’s, and Wockhardt.',
 };
 
 export default function HospitalsPage() {
