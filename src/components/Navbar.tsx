@@ -16,7 +16,7 @@ const navLinks = [
   { label: 'Medical Visa', href: '/medical-visa' },
   { label: 'Hotel & Travel', href: '/travel-assistance' },
   { label: 'Patient Journey', href: '/patient-journey' },
-  { label: 'Testimonials', href: '/testimonials' },
+  // { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact', href: '/contact' },
 ];
 
