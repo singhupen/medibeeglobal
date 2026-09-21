@@ -185,44 +185,8 @@ export const services: Service[] = [
   },
 ];
 
-export interface Hospital {
-  name: string;
-  city: string;
-  tags: string[];
-}
-
-export const partnerHospitals: Hospital[] = [
-  {
-    name: "Apollo Hospital",
-    city: "Delhi",
-    tags: ["Cardiac", "Transplant", "Oncology"],
-  },
-  {
-    name: "Fortis Healthcare",
-    city: "Mumbai",
-    tags: ["Neurosurgery", "Orthopedics", "IVF"],
-  },
-  {
-    name: "AIIMS Delhi",
-    city: "Delhi",
-    tags: ["Research", "Multi-specialty", "Transplant"],
-  },
-  {
-    name: "Manipal Health",
-    city: "Bangalore",
-    tags: ["Cardiac", "Oncology", "Fertility"],
-  },
-  {
-    name: "Narayana Health",
-    city: "Bangalore",
-    tags: ["Cardiac Surgery", "Pediatric", "Transplant"],
-  },
-  {
-    name: "MIOT International",
-    city: "Chennai",
-    tags: ["Orthopedics", "Neurosurgery", "Oncology"],
-  },
-];
+export type { Hospital } from './hospitalData';
+export { hospitalList, partnerHospitals } from './hospitalData';
 
 export interface Testimonial {
   name: string;
@@ -528,7 +492,7 @@ export const destinationsData: Destination[] = [
       "Home to the highest concentration of JCI-accredited quaternary hospitals in South Asia. Known for world-renowned transplant centers, comprehensive oncology networks, and direct consular support.",
     image: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=800&q=80",
     keySpecialties: ["Liver & Kidney Transplant", "Oncology & BMT", "Cardiac Surgery", "Robotic Surgery"],
-    hospitals: ["Apollo Hospital (Indraprastha)", "Fortis Memorial (FMRI)", "AIIMS Delhi", "Medanta The Medicity"],
+    hospitals: ["Medanta Hospital (Gurugram)", "Max Healthcare (Delhi NCR)", "Fortis Healthcare (Gurugram)", "Apollo Hospital (Delhi)", "Artemis Hospital (Gurugram)"],
     flightRoute: "Phnom Penh (PNH) -> Bangkok/Kuala Lumpur -> Delhi (DEL)",
     flightDuration: "Approx. 6.5 - 7.5 hours transit",
     livingCostTier: "Moderate",
@@ -548,7 +512,7 @@ export const destinationsData: Destination[] = [
       "Renowned for cutting-edge medical technology, pleasant year-round climate, and high English literacy. World-famous for cardiac excellence and affordable high-volume surgery programs.",
     image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80",
     keySpecialties: ["Cardiac Surgery", "Robotic Orthopedics", "Fertility & IVF", "Neurology"],
-    hospitals: ["Narayana Health City", "Manipal Hospital", "Fortis Hospital Bannerghatta", "Aster CMI"],
+    hospitals: ["HCG Cancer Centre", "Apollo Hospitals Bengaluru"],
     flightRoute: "Phnom Penh (PNH) -> Bangkok/Singapore/KL -> Bengaluru (BLR)",
     flightDuration: "Approx. 6.5 - 8 hours transit",
     livingCostTier: "Moderate",
@@ -568,7 +532,7 @@ export const destinationsData: Destination[] = [
       "India's financial capital hosts historic medical institutions and internationally certified specialty centers leading breakthroughs in neuro-navigation and hematology.",
     image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=800&q=80",
     keySpecialties: ["Complex Oncology", "Neurosurgery & Spine", "Pediatric Cardiology", "Cosmetic Surgery"],
-    hospitals: ["Fortis Healthcare Mumbai", "Kokilaben Dhirubhai Ambani", "Tata Memorial Network", "Hinduja Hospital"],
+    hospitals: ["Kokilaben Hospital Mumbai", "Wockhardt Hospitals Mumbai", "Fortis Healthcare Mumbai"],
     flightRoute: "Phnom Penh (PNH) -> Bangkok/KL -> Mumbai (BOM)",
     flightDuration: "Approx. 7 hours transit",
     livingCostTier: "Balanced",
@@ -588,7 +552,7 @@ export const destinationsData: Destination[] = [
       "Treats over 40% of international medical tourists entering India. Celebrated for unmatched value, trusted senior surgeons, and high clinical success in orthopedic and transplant surgery.",
     image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
     keySpecialties: ["Organ Transplant", "Joint Replacement", "Eye Surgery", "Cardiac Science"],
-    hospitals: ["Apollo Hospitals Greams Road", "MIOT International", "Gleneagles Global Health City", "Fortis Malar"],
+    hospitals: ["Gleneagles Global Health City", "Apollo Hospitals Greams Road"],
     flightRoute: "Phnom Penh (PNH) -> Bangkok/KL/Singapore -> Chennai (MAA)",
     flightDuration: "Approx. 6 - 7 hours transit",
     livingCostTier: "Budget-Friendly",
@@ -608,7 +572,7 @@ export const destinationsData: Destination[] = [
       "Combining sprawling modern hospital campuses with high affordability, Hyderabad is a favorite for liver transplants, robotic oncology, and cardiac interventions.",
     image: "https://images.unsplash.com/photo-1605007493699-ce65834f8a00?auto=format&fit=crop&w=800&q=80",
     keySpecialties: ["Liver Transplantation", "Radiation Oncology (CyberKnife)", "Orthopedics", "Urology"],
-    hospitals: ["Yashoda Hospitals", "Apollo Health City Jubilee Hills", "KIMS Hospitals", "Continental Hospitals"],
+    hospitals: ["Rainbow Children's Hospital and BirthRight", "Apollo Health City Jubilee Hills"],
     flightRoute: "Phnom Penh (PNH) -> Bangkok/KL -> Hyderabad (HYD)",
     flightDuration: "Approx. 7 hours transit",
     livingCostTier: "Budget-Friendly",

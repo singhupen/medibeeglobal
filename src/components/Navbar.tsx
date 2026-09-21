@@ -9,14 +9,14 @@ import TopBar from '@/components/TopBar';
 
 const navLinks = [
   { label: 'About', href: '/about' },
-  { label: 'Doctors', href: '/doctors' },
   { label: 'Hospitals', href: '/hospitals' },
+  { label: 'Doctors', href: '/doctors' },
   { label: 'Treatments', href: '/specialties' },
   { label: 'Destinations', href: '/destinations' },
   { label: 'Medical Visa', href: '/medical-visa' },
   { label: 'Hotel & Travel', href: '/travel-assistance' },
   { label: 'Patient Journey', href: '/patient-journey' },
-  { label: 'Testimonials', href: '/testimonials' },
+  // { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact', href: '/contact' },
 ];
 
