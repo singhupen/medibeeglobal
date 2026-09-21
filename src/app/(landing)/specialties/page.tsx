@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
-import WhyIndia from '@/components/WhyIndia';
+import SpecialtiesDirectory from '@/components/SpecialtiesDirectory';
 
 export const metadata: Metadata = {
-  title: 'Medical Specialties & Cost Comparisons — Medibeeglobal',
-  description: 'Explore world-class medical treatments in India for Cambodian patients: Cardiac Surgery, Oncology, Organ Transplants, Neurosurgery, Orthopedics, and IVF at 60-80% lower costs.',
+  title: 'Medical Specialties & Treatments in India — Medibeeglobal Network',
+  description:
+    'Explore 14+ world-class medical specialties in India for Cambodian patients: Cardiac Sciences, Oncology & CAR-T, Organ Transplants, BMT, Orthopedics, Neurosurgery, IVF, and Pediatrics at 60-85% lower costs.',
 };
 
 export default function SpecialtiesPage() {
   return (
-    <div className="pt-24">
-      <WhyIndia />
+    <div className="pt-20 lg:pt-24 min-h-screen bg-gray-50/50">
+      <SpecialtiesDirectory />
     </div>
   );
 }
