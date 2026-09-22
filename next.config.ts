@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         destination: '/travel-assistance',
       },
       {
+        source: '/assets/:path*',
+        destination: '/Asset/:path*',
+      },
+      {
         source: '/landing/hotel-travel-assistance',
         destination: '/travel-assistance',
       },
