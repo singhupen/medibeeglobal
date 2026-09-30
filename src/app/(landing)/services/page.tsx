@@ -2,8 +2,36 @@ import type { Metadata } from 'next';
 import Services from '@/components/Services';
 
 export const metadata: Metadata = {
-  title: 'Our Services — Medibeeglobal',
-  description: 'How Medibeeglobal works for you: comprehensive coordination platform connecting patients, hospitals, and travel partners.',
+  title: 'Medical Tourism Services — What Medibeeglobal Does for Cambodian Patients',
+  description:
+    'Medibeeglobal offers full-service medical tourism coordination: doctor matching, hospital admission, medical visa invitation letters, airport pickup, accommodation, Khmer translation, and post-treatment follow-up in Cambodia.',
+  keywords: [
+    'Medibeeglobal services',
+    'medical tourism services Cambodia India',
+    'hospital coordination service Cambodia',
+    'Khmer translation medical India',
+    'medical visa service Cambodia',
+    'Cambodia India medical coordinator services',
+    'second opinion service India Cambodia',
+    'post treatment follow-up Cambodia',
+  ],
+  alternates: {
+    canonical: 'https://www.medibeeglobal.com/services',
+  },
+  openGraph: {
+    title: 'Medical Tourism Services — What Medibeeglobal Does for Cambodian Patients',
+    description:
+      'Doctor matching, hospital admission, medical visa letters, airport pickup, accommodation, Khmer translation, and lifelong follow-up — all handled by Medibeeglobal.',
+    url: 'https://www.medibeeglobal.com/services',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Medibeeglobal Services' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Medical Tourism Services — What Medibeeglobal Does for Cambodian Patients',
+    description:
+      'Full-service medical tourism coordination: doctor matching, visa letters, Khmer translation, and post-treatment follow-up.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function ServicesPage() {

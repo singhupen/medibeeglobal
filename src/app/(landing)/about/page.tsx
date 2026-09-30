@@ -5,8 +5,35 @@ import ProblemSection from '@/components/ProblemSection';
 import CrossIcon from '@/components/CrossIcon';
 
 export const metadata: Metadata = {
-  title: 'About Us — Medibeeglobal',
-  description: 'Learn why Medibeeglobal was founded: solving medical travel fragmentation, language barriers, and lack of follow-up for Cambodian patients seeking healthcare in India.',
+  title: 'About Medibeeglobal — Our Mission, Values & Team',
+  description:
+    'Learn why Medibeeglobal was founded: solving medical travel fragmentation, language barriers, and lack of follow-up care for Cambodian patients seeking world-class healthcare in India.',
+  keywords: [
+    'about Medibeeglobal',
+    'medical tourism company Cambodia',
+    'Cambodia India healthcare bridge',
+    'Khmer medical case manager',
+    'JCI hospital partner Cambodia',
+    'transparent medical travel',
+    'direct hospital billing India',
+  ],
+  alternates: {
+    canonical: 'https://www.medibeeglobal.com/about',
+  },
+  openGraph: {
+    title: 'About Medibeeglobal — Our Mission, Values & Team',
+    description:
+      'Medibeeglobal was founded to bring clarity, dignity, and seamless cross-border coordination to Cambodian patients seeking world-class medical treatment in India.',
+    url: 'https://www.medibeeglobal.com/about',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'About Medibeeglobal' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Medibeeglobal — Our Mission, Values & Team',
+    description:
+      'Medibeeglobal was founded to bring clarity, dignity, and seamless cross-border coordination to Cambodian patients seeking world-class medical treatment in India.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function AboutPage() {
