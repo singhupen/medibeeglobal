@@ -97,7 +97,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`h-full scroll-smooth ${plusJakarta.variable}`}>
+    <html lang="en" className={`h-full scroll-smooth ${plusJakarta.variable}`} data-scroll-behavior="smooth">
       <body className={`min-h-full flex flex-col antialiased ${plusJakarta.className}`}>
         {/* Loads Google's translation engine; renders no visible UI itself */}
         <GoogleTranslate />
