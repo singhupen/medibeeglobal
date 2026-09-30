@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     'post-surgery follow-up Cambodia',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/patient-journey',
+    canonical: '/patient-journey',
   },
   openGraph: {
     title: 'The Patient Journey — From Cambodia to India with Medibeeglobal',
     description:
       'A step-by-step roadmap from your consultation in Phnom Penh to world-class treatment in India, with dedicated Khmer support at every stage.',
-    url: 'https://www.medibeeglobal.com/patient-journey',
+    url: '/patient-journey',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Patient Journey Cambodia to India' }],
   },
   twitter: {

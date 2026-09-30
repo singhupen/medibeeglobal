@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     'travel assistance Cambodia to India',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/travel-assistance',
+    canonical: '/travel-assistance',
   },
   openGraph: {
     title: 'Travel & Hotel Assistance in India for Cambodian Medical Patients — Medibeeglobal',
     description:
       '24/7 airport pickup, hospital-adjacent hotels, Khmer on-ground support, and 30–50% hotel discounts for Cambodian patients in India.',
-    url: 'https://www.medibeeglobal.com/travel-assistance',
+    url: '/travel-assistance',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Travel Assistance India Cambodia' }],
   },
   twitter: {

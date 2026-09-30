@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 export interface CarouselSlide {
   url: string;
@@ -93,10 +94,13 @@ export default function HeroImageCarousel({ autoPlayInterval = 4500 }: HeroImage
                 aria-hidden={!isActive}
               >
                 {/* Image - completely clear and unobstructed */}
-                <img
+                <Image
                   src={slide.url}
                   alt={slide.alt}
-                  className="w-full h-full object-cover object-center"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 58vw"
+                  priority={index === 0}
                   loading={index === 0 ? 'eager' : 'lazy'}
                 />
               </div>

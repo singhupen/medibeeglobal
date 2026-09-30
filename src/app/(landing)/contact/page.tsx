@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import ContactPageClient from './_ContactPage';
+import JsonLd from '@/components/JsonLd';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Contact Medibeeglobal — Get in Touch with Our Case Managers',
@@ -16,13 +18,13 @@ export const metadata: Metadata = {
     'WhatsApp Medibeeglobal',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/contact',
+    canonical: '/contact',
   },
   openGraph: {
     title: 'Contact Medibeeglobal — Get in Touch with Our Case Managers',
     description:
       'Reach out to Medibeeglobal in Phnom Penh by phone, email, Telegram, or WhatsApp. Submit your medical records for a free confidential consultation.',
-    url: 'https://www.medibeeglobal.com/contact',
+    url: '/contact',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Medibeeglobal' }],
   },
   twitter: {
@@ -34,6 +36,20 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: `${SITE_URL}/contact` },
+  ],
+};
+
 export default function ContactPage() {
-  return <ContactPageClient />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <ContactPageClient />
+    </>
+  );
 }

@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'compare Indian medical cities',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/destinations',
+    canonical: '/destinations',
   },
   openGraph: {
     title: 'Top Medical Tourism Destinations in India — Delhi, Bengaluru, Chennai & More',
     description:
       "Compare India's top medical cities for Cambodian patients: Delhi NCR, Bengaluru, Chennai, Mumbai, and Kolkata — with hospital networks, flight routes, and living costs.",
-    url: 'https://www.medibeeglobal.com/destinations',
+    url: '/destinations',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Medical Tourism Destinations India' }],
   },
   twitter: {

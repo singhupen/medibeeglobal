@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import PartnerHospitals from '@/components/PartnerHospitals';
+import JsonLd from '@/components/JsonLd';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Partner Hospitals in India for Cambodian Patients — Medibeeglobal Network',
@@ -19,13 +21,13 @@ export const metadata: Metadata = {
     'international patient hospital India',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/hospitals',
+    canonical: '/hospitals',
   },
   openGraph: {
     title: 'Partner Hospitals in India for Cambodian Patients — Medibeeglobal Network',
     description:
       'Medibeeglobal partners with 10+ JCI-accredited hospitals across India: Apollo, Fortis, Medanta, Max, Kokilaben, HCG, Gleneagles, Rainbow, and Wockhardt.',
-    url: 'https://www.medibeeglobal.com/hospitals',
+    url: '/hospitals',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Partner Hospitals India Medibeeglobal' }],
   },
   twitter: {
@@ -37,10 +39,22 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Hospitals', item: `${SITE_URL}/hospitals` },
+  ],
+};
+
 export default function HospitalsPage() {
   return (
-    <div className="pt-20 lg:pt-24 min-h-screen bg-gray-50/50">
-      <PartnerHospitals />
-    </div>
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <div className="pt-20 lg:pt-24 min-h-screen bg-gray-50/50">
+        <PartnerHospitals />
+      </div>
+    </>
   );
 }

@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import GoogleTranslate from "@/components/GoogleTranslate";
+import { SITE_URL } from "@/lib/config";
 
-const BASE_URL = "https://www.medibeeglobal.com";
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
+
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Medibeeglobal — Trusted Medical Tourism from Cambodia to India",
     template: "%s | Medibeeglobal",
@@ -34,7 +42,7 @@ export const metadata: Metadata = {
     "hospital in Bangalore for Cambodia patients",
     "hospital in Chennai for Cambodia patients",
   ],
-  authors: [{ name: "Medibeeglobal", url: BASE_URL }],
+  authors: [{ name: "Medibeeglobal", url: SITE_URL }],
   creator: "Medibeeglobal",
   publisher: "Medibeeglobal",
   robots: {
@@ -49,12 +57,12 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: BASE_URL,
+    canonical: '/',
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: BASE_URL,
+    url: SITE_URL,
     siteName: "Medibeeglobal",
     title: "Medibeeglobal — Trusted Medical Tourism from Cambodia to India",
     description:
@@ -89,8 +97,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
-      <body className="min-h-full flex flex-col antialiased">
+    <html lang="en" className={`h-full scroll-smooth ${plusJakarta.variable}`}>
+      <body className={`min-h-full flex flex-col antialiased ${plusJakarta.className}`}>
         {/* Loads Google's translation engine; renders no visible UI itself */}
         <GoogleTranslate />
         {children}

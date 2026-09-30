@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     'cross-border care process Cambodia',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/how-it-works',
+    canonical: '/how-it-works',
   },
   openGraph: {
     title: 'How It Works — The 6-Step Medibeeglobal Medical Journey',
     description:
       'Free consultation, doctor matching, hospital admission, medical visa, treatment in India, and lifelong follow-up — the full Medibeeglobal patient journey.',
-    url: 'https://www.medibeeglobal.com/how-it-works',
+    url: '/how-it-works',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'How Medibeeglobal Works' }],
   },
   twitter: {

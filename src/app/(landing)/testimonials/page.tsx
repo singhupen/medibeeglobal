@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'real patient reviews India',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/testimonials',
+    canonical: '/testimonials',
   },
   openGraph: {
     title: 'Patient Testimonials — Real Stories from Cambodian Families | Medibeeglobal',
     description:
       'Read authentic testimonials from 500+ Cambodian patients who received life-saving care in India through Medibeeglobal — with 98% satisfaction.',
-    url: 'https://www.medibeeglobal.com/testimonials',
+    url: '/testimonials',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Medibeeglobal Patient Testimonials' }],
   },
   twitter: {

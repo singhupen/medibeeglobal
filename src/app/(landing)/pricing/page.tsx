@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     'compare hospital prices India Cambodia',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/pricing',
+    canonical: '/pricing',
   },
   openGraph: {
     title: 'Medical Treatment Pricing in India — Transparent Packages for Cambodian Patients',
     description:
       'Transparent pricing for cardiac surgery, knee replacement, cancer treatment, organ transplants, and IVF at top Indian hospitals — 60–80% lower than Cambodia or Singapore.',
-    url: 'https://www.medibeeglobal.com/pricing',
+    url: '/pricing',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'India Medical Treatment Pricing' }],
   },
   twitter: {

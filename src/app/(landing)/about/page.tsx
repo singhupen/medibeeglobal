@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { ArrowRight, ShieldCheck, HeartHandshake, Eye, Sparkles } from 'lucide-react';
 import ProblemSection from '@/components/ProblemSection';
 import CrossIcon from '@/components/CrossIcon';
+import JsonLd from '@/components/JsonLd';
+import { SITE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'About Medibeeglobal — Our Mission, Values & Team',
@@ -18,13 +20,13 @@ export const metadata: Metadata = {
     'direct hospital billing India',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/about',
+    canonical: '/about',
   },
   openGraph: {
     title: 'About Medibeeglobal — Our Mission, Values & Team',
     description:
       'Medibeeglobal was founded to bring clarity, dignity, and seamless cross-border coordination to Cambodian patients seeking world-class medical treatment in India.',
-    url: 'https://www.medibeeglobal.com/about',
+    url: '/about',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'About Medibeeglobal' }],
   },
   twitter: {
@@ -37,8 +39,19 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE_URL}/about` },
+    ],
+  };
+
   return (
-    <div className="pt-20 lg:pt-24">
+    <>
+      <JsonLd data={breadcrumbJsonLd} />
+      <div className="pt-20 lg:pt-24">
       {/* Hero Header */}
       <section className="bg-primary-500 text-white pt-12 pb-12 lg:pt-16 lg:pb-16 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3" />
@@ -116,6 +129,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

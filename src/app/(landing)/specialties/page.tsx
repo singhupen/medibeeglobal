@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     'affordable specialty care India',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/specialties',
+    canonical: '/specialties',
   },
   openGraph: {
     title: 'Medical Specialties & Treatments in India for Cambodian Patients — Medibeeglobal',
     description:
       '14+ medical specialties in India for Cambodian patients: cardiac surgery, oncology, transplants, IVF, orthopedics, and neurosurgery at 60-85% lower costs.',
-    url: 'https://www.medibeeglobal.com/specialties',
+    url: '/specialties',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Medical Specialties India Cambodia' }],
   },
   twitter: {

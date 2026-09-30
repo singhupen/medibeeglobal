@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     'post treatment follow-up Cambodia',
   ],
   alternates: {
-    canonical: 'https://www.medibeeglobal.com/services',
+    canonical: '/services',
   },
   openGraph: {
     title: 'Medical Tourism Services — What Medibeeglobal Does for Cambodian Patients',
     description:
       'Doctor matching, hospital admission, medical visa letters, airport pickup, accommodation, Khmer translation, and lifelong follow-up — all handled by Medibeeglobal.',
-    url: 'https://www.medibeeglobal.com/services',
+    url: '/services',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Medibeeglobal Services' }],
   },
   twitter: {
