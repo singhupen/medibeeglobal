@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, RefreshCw } from 'lucide-react';
 import { useCaseModal } from '@/context/case-modal-context';
-import { PHONE_NUMBER } from '@/lib/config';
+import { PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/config';
 
 export default function ContactPage() {
   const { openCaseModal } = useCaseModal();
@@ -169,7 +169,7 @@ export default function ContactPage() {
                     <Send className="w-4 h-4" /> Telegram
                   </a>
                   <a
-                    href="https://wa.me"
+                    href={SOCIAL_LINKS.whatsapp}
                     target="_blank"
                     rel="noreferrer"
                     className="bg-white/10 hover:bg-accent-400 hover:text-primary-950 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm"

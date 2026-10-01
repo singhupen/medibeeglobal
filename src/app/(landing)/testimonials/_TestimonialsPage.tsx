@@ -26,6 +26,7 @@ export default function TestimonialsPage() {
   const [selectedCat, setSelectedCat] = useState('All Stories');
 
   const filteredStories = extendedTestimonials.filter((item) => {
+    if (!item.verified) return false;
     if (selectedCat === 'All Stories') return true;
     if (selectedCat === 'Cardiac') return item.treatment.includes('Cardiac') || item.treatment.includes('CABG');
     if (selectedCat === 'Orthopedics') return item.treatment.includes('Knee') || item.treatment.includes('Replacement');

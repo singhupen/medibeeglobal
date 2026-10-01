@@ -15,12 +15,12 @@ export default function Testimonials() {
             What Our Patients Say
           </h2>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            Real Cambodian families who trusted Medibeeglobal for their specialized treatment in India.
+            Patients who trusted Medibeeglobal for their specialized treatment in India.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, i) => (
+          {testimonials.filter(t => t.verified).map((testimonial, i) => (
             <div
               key={testimonial.name}
               className="group bg-gradient-to-b from-gray-50/70 via-white to-gray-50/30 border border-gray-100 hover:border-primary-200 rounded-3xl p-8 hover:shadow-card transition-all duration-300 hover:-translate-y-1 relative flex flex-col justify-between"

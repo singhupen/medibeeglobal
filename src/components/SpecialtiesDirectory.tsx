@@ -132,7 +132,7 @@ export default function SpecialtiesDirectory() {
               <span className="text-xs text-white/80 font-medium">JCI / NABH Network</span>
             </div>
             <div className="p-3 text-center border-l border-t md:border-t-0 border-white/20">
-              <span className="block text-2xl sm:text-3xl font-black text-accent-400">24 Hours</span>
+              <span className="block text-2xl sm:text-3xl font-black text-accent-400">24–48 Hours</span>
               <span className="text-xs text-white/80 font-medium">Doctor Case Review</span>
             </div>
           </div>
@@ -541,7 +541,7 @@ export default function SpecialtiesDirectory() {
                 Unsure Which Medical Specialty or Procedure Applies to Your Case?
               </h3>
               <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                Submit your diagnostic reports, scan summaries, or Cambodian doctor referral. Our India medical team will review your files free of charge and provide an expert second opinion within 24 hours.
+                Submit your diagnostic reports, scan summaries, or Cambodian doctor referral. Our India medical team will review your files free of charge and provide an expert second opinion within 24–48 hours.
               </p>
             </div>
 

@@ -220,7 +220,7 @@ export default function PartnerHospitals() {
               <span className="text-xs text-white/80 font-medium">Surgeries Coordinated</span>
             </div>
             <div className="p-3 text-center border-l border-t md:border-t-0 border-white/20">
-              <span className="block text-2xl sm:text-3xl font-black text-accent-400">24 Hours</span>
+              <span className="block text-2xl sm:text-3xl font-black text-accent-400">24–48 Hours</span>
               <span className="text-xs text-white/80 font-medium">Doctor Case Review</span>
             </div>
           </div>

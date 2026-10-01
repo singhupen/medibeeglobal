@@ -42,7 +42,7 @@ export const extendedTestimonials: Testimonial[] = [
     city: "Siem Reap",
     treatment: "Robotic Liver Resection & Oncology",
     quote:
-      "When my father was diagnosed with a complex liver lesion, local clinics gave us little hope. Medibeeglobal arranged a direct consultation with the chief transplant surgeon at Apollo Delhi within 24 hours. The surgery was completely robotic and successful. He is back home in Siem Reap enjoying life with his grandchildren.",
+      "When my father was diagnosed with a complex liver lesion, local clinics gave us little hope. Medibeeglobal arranged a direct consultation with the chief transplant surgeon at Apollo Delhi within 24–48 hours. The surgery was completely robotic and successful. He is back home in Siem Reap enjoying life with his grandchildren.",
     hospital: "Apollo Hospital, Delhi",
     timeline: "Full recovery in 8 weeks",
     rating: 5,
