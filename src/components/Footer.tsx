@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Mail, Phone, MapPin, ShieldCheck, ArrowRight, Clock, Sparkles, ChevronRight, ArrowUp } from 'lucide-react';
 import { useCaseModal } from '@/context/case-modal-context';
 import Logo from '@/components/Logo';
+import { SOCIAL_LINKS, PHONE_NUMBER } from '@/lib/config';
 
 interface QuickLinkItem {
   label: string;
@@ -252,10 +253,10 @@ export default function Footer({ onSubmitCase }: { onSubmitCase?: () => void }) 
               <li className="flex items-center gap-2.5 text-white/70">
                 <Phone className="w-4 h-4 text-accent-400 flex-shrink-0" />
                 <a
-                  href="tel:+855010707404"
+                  href={`tel:${PHONE_NUMBER}`}
                   className="hover:text-white hover:underline transition-colors tracking-wide"
                 >
-                  +855-010707404
+                  {PHONE_NUMBER}
                 </a>
               </li>
 

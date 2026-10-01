@@ -188,43 +188,7 @@ export const services: Service[] = [
 export type { Hospital } from './hospitalData';
 export { hospitalList, partnerHospitals } from './hospitalData';
 
-export interface Testimonial {
-  name: string;
-  city: string;
-  treatment: string;
-  quote: string;
-  photo: string;
-}
-
-export const testimonials: Testimonial[] = [
-  {
-    name: "Sopheap Chen",
-    city: "Phnom Penh",
-    treatment: "Cardiac Surgery (CABG)",
-    quote:
-      "Medibeeglobal made the whole process feel safe. From the first call to my follow-up after returning home, I always had someone to talk to. The doctors in India were excellent and my case manager explained everything in Khmer.",
-    photo:
-      "https://images.pexels.com/photos/698532/pexels-photo-698532.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  },
-  {
-    name: "Dara Kim",
-    city: "Siem Reap",
-    treatment: "Knee Replacement",
-    quote:
-      "I was scared about going to India alone. Medibeeglobal arranged everything — visa, flights, hotel for my wife, and a Khmer interpreter at the hospital. I felt supported the entire time. My knee is better than ever.",
-    photo:
-      "https://images.pexels.com/photos/20782648/pexels-photo-20782648.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  },
-  {
-    name: "Bopha Eng",
-    city: "Battambang",
-    treatment: "Fertility Treatment (IVF)",
-    quote:
-      "After years of trying, Medibeeglobal connected us with an amazing fertility specialist in Bangalore. The cost was a fraction of what we were quoted elsewhere. We are now proud parents of twin girls. Forever grateful.",
-    photo:
-      "https://images.pexels.com/photos/18671527/pexels-photo-18671527.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  },
-];
+// Testimonials have been moved to src/data/testimonials.ts
 
 export interface PricingCard {
   icon: LucideIcon;
@@ -331,8 +295,7 @@ export const contactOptions = [
   { value: "WhatsApp", icon: MessageCircle },
 ];
 
-export const heroImage =
-  "https://images.pexels.com/photos/7578797/pexels-photo-7578797.jpeg?auto=compress&cs=tinysrgb&h=650&w=940";
+// heroImage removed to avoid external Pexels links
 
 export const siteLogo = "/logo-transparent.png";
 export { themeConfig } from "./theme";

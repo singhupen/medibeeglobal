@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, RefreshCw } from 'lucide-react';
 import { useCaseModal } from '@/context/case-modal-context';
+import { PHONE_NUMBER } from '@/lib/config';
 
 export default function ContactPage() {
   const { openCaseModal } = useCaseModal();
@@ -121,8 +122,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-900">Direct Phone Line</p>
-                    <a href="tel:+855010707404" className="text-primary-600 font-semibold text-sm hover:underline mt-1 block">
-                      +855-010707404
+                    <a href={`tel:${PHONE_NUMBER}`} className="text-primary-600 font-semibold text-sm hover:underline mt-1 block">
+                      {PHONE_NUMBER}
                     </a>
                     <p className="text-xs text-gray-400 mt-0.5">Khmer, English & Chinese spoken</p>
                   </div>

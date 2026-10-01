@@ -1,5 +1,6 @@
-import { testimonials } from '@/lib/data';
+import { testimonials } from '@/data/testimonials';
 import { Star, Quote, CheckCircle2, MessageSquareQuote } from 'lucide-react';
+import Avatar from '@/components/Avatar';
 
 export default function Testimonials() {
   return (
@@ -42,14 +43,12 @@ export default function Testimonials() {
 
               <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
                 <div className="relative">
-                  <img
-                    src={testimonial.photo}
-                    alt={testimonial.name}
-                    className="w-13 h-13 rounded-full object-cover ring-2 ring-primary-100 group-hover:ring-primary-400 transition-all"
-                  />
-                  <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-xs">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent-500 fill-accent-50" />
-                  </div>
+                  <Avatar name={testimonial.name} image={testimonial.photo} />
+                  {testimonial.verified && (
+                    <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-xs">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-accent-500 fill-accent-50" />
+                    </div>
+                  )}
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">

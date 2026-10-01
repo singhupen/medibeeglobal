@@ -3,6 +3,7 @@
 import { Mail, Phone } from 'lucide-react';
 import { themeConfig } from '@/lib/theme';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { SOCIAL_LINKS } from '@/lib/config';
 
 export default function TopBar() {
   const { contact } = themeConfig.brand;

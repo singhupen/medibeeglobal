@@ -27,6 +27,7 @@ export interface CaseFormData {
   hasDocuments: boolean;
   timeline: string;
   contactPreference: string;
+  consent: boolean;
 }
 
 const initialData: CaseFormData = {
@@ -39,6 +40,7 @@ const initialData: CaseFormData = {
   hasDocuments: false,
   timeline: '',
   contactPreference: '',
+  consent: false,
 };
 
 const stepIcons = [User, Stethoscope, Calendar, MessageCircle];
@@ -96,7 +98,8 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
     data.specialty.trim() &&
     data.details.trim() &&
     data.timeline.trim() &&
-    data.contactPreference.trim()
+    data.contactPreference.trim() &&
+    data.consent
   );
 
   const isSubmitDisabled = submitting || !isAllRequiredFilled || !isCaptchaValid;
@@ -126,6 +129,7 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
 
     if (currentStep === 3) {
       if (!data.contactPreference) newErrors.contactPreference = 'Please select a contact preference';
+      if (!data.consent) newErrors.consent = 'You must agree to the Privacy Policy and Terms of Service';
     }
 
     setErrors(newErrors);
@@ -595,6 +599,27 @@ export default function CaseFormModal({ open, onClose }: { open: boolean; onClos
                     <SummaryRow label="City" value={data.city} />
                     <SummaryRow label="Specialty" value={data.specialty} />
                     <SummaryRow label="Timeline" value={data.timeline} />
+                  </div>
+
+                  {/* Privacy Consent */}
+                  <div className="flex items-start gap-3 mt-4">
+                    <input
+                      type="checkbox"
+                      id="consent"
+                      checked={data.consent}
+                      onChange={(e) => update('consent', e.target.checked)}
+                      className="mt-1 flex-shrink-0 w-4 h-4 text-primary-500 border-gray-300 rounded focus:ring-primary-500 cursor-pointer"
+                    />
+                    <div className="flex-1">
+                      <label htmlFor="consent" className="text-xs text-gray-600 leading-relaxed cursor-pointer block">
+                        I agree to the <a href="/terms" className="text-primary-600 hover:underline font-semibold" target="_blank" rel="noreferrer">Terms of Service</a> and <a href="/privacy" className="text-primary-600 hover:underline font-semibold" target="_blank" rel="noreferrer">Privacy Policy</a>. I consent to Medibeeglobal collecting and processing my medical and personal data to provide healthcare assistance.
+                      </label>
+                      {errors.consent && (
+                        <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
+                          <AlertCircle className="w-3.5 h-3.5" /> {errors.consent}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}

@@ -2,6 +2,7 @@
  * Medibeeglobal Theme & Brand Configuration
  * Centralized theme settings for branding, logos, and design tokens.
  */
+import { PHONE_NUMBER } from '@/lib/config';
 
 export const themeConfig = {
   brand: {
@@ -19,9 +20,9 @@ export const themeConfig = {
       aspectRatio: 4.52, // 1899 : 420
     },
     contact: {
-      phone: '+855-010707404',
-      phoneDisplay: '+855-010707404',
-      phoneTel: 'tel:+855010707404',
+      phone: PHONE_NUMBER,
+      phoneDisplay: PHONE_NUMBER,
+      phoneTel: `tel:${PHONE_NUMBER}`,
       email: 'care@medibeeglobal.com',
       emailMailto: 'mailto:care@medibeeglobal.com',
       address: '#111, St. 09B, Thmorda Village, Sangkat Kontouk, Khan Kombol, Phnom Penh, Cambodia',

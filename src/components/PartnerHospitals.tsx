@@ -70,7 +70,6 @@ function HospitalCardImageCarousel({
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            priority={idx === 0}
           />
           {/* Subtle gradient vignette for text legibility */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />

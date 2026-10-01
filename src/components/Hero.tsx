@@ -18,7 +18,7 @@ export default function Hero({ onSubmitCase }: HeroProps) {
       <div className="relative max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
           {/* Left: Content (5 cols on desktop) */}
-          <div className="lg:col-span-5 text-center lg:text-left animate-fade-in-up">
+          <div className="lg:col-span-5 text-center lg:text-left md:animate-fade-in-up">
             <div className="inline-flex items-center gap-2.5 bg-white/15 hover:bg-white/20 transition-colors backdrop-blur-md border border-white/25 rounded-full px-4 py-1.5 mb-6 shadow-sm">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75" />
@@ -92,7 +92,7 @@ export default function Hero({ onSubmitCase }: HeroProps) {
           </div>
 
           {/* Right: Sliding Medical Carousel (7 cols on desktop - wider layout) */}
-          <div className="lg:col-span-7 relative animate-fade-in-up w-full">
+          <div className="lg:col-span-7 relative md:animate-fade-in-up w-full">
             <HeroImageCarousel autoPlayInterval={4500} />
           </div>
         </div>
