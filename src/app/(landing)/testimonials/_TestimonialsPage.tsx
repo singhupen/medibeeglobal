@@ -14,46 +14,10 @@ import {
   Sparkles,
   ShieldCheck
 } from 'lucide-react';
-import { testimonials, Testimonial } from '@/lib/data';
+import { extendedTestimonials } from '@/data/testimonials';
 import { useCaseModal } from '@/context/case-modal-context';
 import CrossIcon from '@/components/CrossIcon';
-
-const extendedTestimonials = [
-  ...testimonials,
-  {
-    name: "Vireak Meas",
-    city: "Siem Reap",
-    treatment: "Robotic Liver Resection & Oncology",
-    quote:
-      "When my father was diagnosed with a complex liver lesion, local clinics gave us little hope. Medibeeglobal arranged a direct consultation with the chief transplant surgeon at Apollo Delhi within 24 hours. The surgery was completely robotic and successful. He is back home in Siem Reap enjoying life with his grandchildren.",
-    photo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    hospital: "Apollo Hospital, Delhi",
-    timeline: "Full recovery in 8 weeks",
-    rating: 5,
-  },
-  {
-    name: "Kolap Seng",
-    city: "Phnom Penh",
-    treatment: "Bilateral Robotic Knee Replacement",
-    quote:
-      "I suffered from severe osteoarthritis for over five years and could barely walk across my living room. In Bangalore, Dr. Rajesh Mehta performed bilateral robotic knee replacement. I was up on my feet with a walker the very next morning! The Khmer interpreter stayed with me during all nurse checks.",
-    photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    hospital: "Manipal Hospital, Bengaluru",
-    timeline: "Walking unassisted by Week 3",
-    rating: 5,
-  },
-  {
-    name: "Chanthy Roeun",
-    city: "Kampong Cham",
-    treatment: "Pediatric Cardiac Surgery (VSD Closure)",
-    quote:
-      "Our 4-year-old daughter was born with a ventricular septal defect. Medibeeglobal handled our medical visa, arranged an ambulance straight from Delhi airport, and got us admitted to the specialized pediatric cardiac ICU. The nurses were compassionate and our daughter is now running, playing, and healthy.",
-    photo: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    hospital: "Fortis Escorts Heart Institute, Delhi",
-    timeline: "Healthy and thriving",
-    rating: 5,
-  },
-];
+import Avatar from '@/components/Avatar';
 
 const categories = ['All Stories', 'Cardiac', 'Orthopedics', 'Fertility (IVF)', 'Oncology & Transplant'];
 
@@ -62,6 +26,7 @@ export default function TestimonialsPage() {
   const [selectedCat, setSelectedCat] = useState('All Stories');
 
   const filteredStories = extendedTestimonials.filter((item) => {
+    if (!item.verified) return false;
     if (selectedCat === 'All Stories') return true;
     if (selectedCat === 'Cardiac') return item.treatment.includes('Cardiac') || item.treatment.includes('CABG');
     if (selectedCat === 'Orthopedics') return item.treatment.includes('Knee') || item.treatment.includes('Replacement');
@@ -163,11 +128,7 @@ export default function TestimonialsPage() {
 
                 <div className="space-y-4 pt-6 border-t border-gray-100">
                   <div className="flex items-center gap-4">
-                    <img
-                      src={item.photo}
-                      alt={item.name}
-                      className="w-13 h-13 rounded-full object-cover shadow-sm"
-                    />
+                    <Avatar name={item.name} image={item.photo} />
                     <div>
                       <p className="font-extrabold text-gray-900 text-sm">{item.name}</p>
                       <p className="text-xs text-gray-400 flex items-center gap-1">

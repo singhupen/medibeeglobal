@@ -1,5 +1,6 @@
-import { testimonials } from '@/lib/data';
+import { testimonials } from '@/data/testimonials';
 import { Star, Quote, CheckCircle2, MessageSquareQuote } from 'lucide-react';
+import Avatar from '@/components/Avatar';
 
 export default function Testimonials() {
   return (
@@ -14,12 +15,12 @@ export default function Testimonials() {
             What Our Patients Say
           </h2>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            Real Cambodian families who trusted Medibeeglobal for their specialized treatment in India.
+            Patients who trusted Medibeeglobal for their specialized treatment in India.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, i) => (
+          {testimonials.filter(t => t.verified).map((testimonial, i) => (
             <div
               key={testimonial.name}
               className="group bg-gradient-to-b from-gray-50/70 via-white to-gray-50/30 border border-gray-100 hover:border-primary-200 rounded-3xl p-8 hover:shadow-card transition-all duration-300 hover:-translate-y-1 relative flex flex-col justify-between"
@@ -42,14 +43,12 @@ export default function Testimonials() {
 
               <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
                 <div className="relative">
-                  <img
-                    src={testimonial.photo}
-                    alt={testimonial.name}
-                    className="w-13 h-13 rounded-full object-cover ring-2 ring-primary-100 group-hover:ring-primary-400 transition-all"
-                  />
-                  <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-xs">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-accent-500 fill-accent-50" />
-                  </div>
+                  <Avatar name={testimonial.name} image={testimonial.photo} />
+                  {testimonial.verified && (
+                    <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-xs">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-accent-500 fill-accent-50" />
+                    </div>
+                  )}
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">

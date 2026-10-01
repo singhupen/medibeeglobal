@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import HomePageClient from './_HomePageClient';
 import JsonLd from '@/components/JsonLd';
-import { SITE_URL } from '@/lib/config';
+import { SITE_URL, PHONE_NUMBER, SOCIAL_LINKS } from '@/lib/config';
 
 export const metadata: Metadata = {
   alternates: {
@@ -23,18 +23,18 @@ const organizationJsonLd = {
     addressLocality: 'Phnom Penh',
     addressCountry: 'KH',
   },
-  telephone: '+855-010707404',
+  telephone: PHONE_NUMBER,
   email: 'care@medibeeglobal.com',
   sameAs: [
-    'https://facebook.com',
-    'https://instagram.com',
-    'https://linkedin.com',
-    'https://youtube.com',
-    'https://wa.me/855010707404',
-  ],
+    SOCIAL_LINKS.facebook,
+    SOCIAL_LINKS.instagram,
+    SOCIAL_LINKS.linkedin,
+    SOCIAL_LINKS.youtube,
+    SOCIAL_LINKS.whatsapp,
+  ].filter(Boolean),
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+855-010707404',
+    telephone: PHONE_NUMBER,
     contactType: 'customer service',
     availableLanguage: ['English', 'Khmer'],
   },

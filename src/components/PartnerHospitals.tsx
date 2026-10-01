@@ -70,7 +70,6 @@ function HospitalCardImageCarousel({
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            priority={idx === 0}
           />
           {/* Subtle gradient vignette for text legibility */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
@@ -221,7 +220,7 @@ export default function PartnerHospitals() {
               <span className="text-xs text-white/80 font-medium">Surgeries Coordinated</span>
             </div>
             <div className="p-3 text-center border-l border-t md:border-t-0 border-white/20">
-              <span className="block text-2xl sm:text-3xl font-black text-accent-400">24 Hours</span>
+              <span className="block text-2xl sm:text-3xl font-black text-accent-400">24–48 Hours</span>
               <span className="text-xs text-white/80 font-medium">Doctor Case Review</span>
             </div>
           </div>
