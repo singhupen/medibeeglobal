@@ -307,22 +307,41 @@ export { CheckCircle2, MapPin, Sparkles };
 export interface Doctor {
   id: string;
   name: string;
-  role: string;
-  specialty: string;
-  department: string;
-  hospital: string;
-  city: string;
-  experienceYears: number;
-  surgeriesCount: string;
-  qualifications: string;
-  fellowships: string;
-  languages: string[];
-  photo: string;
+  role?: string;
+  specialty?: string;
+  department?: string;
+  hospital?: string;
+  city?: string;
+  experienceYears?: number;
+  surgeriesCount?: string;
+  qualifications?: string;
+  fellowships?: string;
+  languages?: string[];
+  photo?: string;
   badge?: string;
-  bio: string;
+  bio?: string;
+  contact?: string;
 }
 
 export const doctorsData: Doctor[] = [
+  {
+    id: "adegboyegun-tayo",
+    name: "Dr. Adegboyegun Tayo",
+    role: "Senior Consultant, Internal Medicine",
+    specialty: "Internal Medicine",
+    department: "Internal Medicine & General Care",
+    hospital: "Medibeeglobal Partner Hospital",
+    // city: "Delhi NCR",
+    // experienceYears: 10,
+    // surgeriesCount: "1,000+",
+    qualifications: "MBBS, MD (Internal Medicine)",
+    fellowships: "Fellow in Internal Medicine",
+    languages: ["English"],
+    photo: "/doctor/adegboyegun.jpeg",
+    badge: "Verified Specialist",
+    bio: "Experienced internal medicine specialist providing comprehensive diagnosis, acute condition management, and cross-border clinical consultations.",
+    contact: "+55-11-97333-9585",
+  },
   {
     id: "dr-naresh-sharma",
     name: "Dr. Naresh Sharma",
@@ -339,23 +358,6 @@ export const doctorsData: Doctor[] = [
     photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80",
     badge: "Top Cardiac Surgeon",
     bio: "Pioneer in minimally invasive bypass surgery, valve reconstruction, and pediatric cardiac procedures with outstanding 99.2% surgical success rates.",
-  },
-  {
-    id: "dr-ananya-sen",
-    name: "Dr. Ananya Sen",
-    role: "Director of Medical Oncology & BMT",
-    specialty: "Oncology",
-    department: "Cancer Care & Bone Marrow Transplant",
-    hospital: "Fortis Memorial Research Institute",
-    city: "Delhi NCR",
-    experienceYears: 22,
-    surgeriesCount: "8,500+",
-    qualifications: "MBBS, MD (Medicine), DM (Medical Oncology)",
-    fellowships: "Fellowship in Stem Cell Transplant (MD Anderson, USA)",
-    languages: ["English", "Hindi"],
-    photo: "https://images.unsplash.com/photo-1594824813575-29e18b625cf8?auto=format&fit=crop&w=600&q=80",
-    badge: "BMT & Oncology Specialist",
-    bio: "Internationally renowned for precision immunotherapy, targeted therapies for solid tumors, and successful haploidentical bone marrow transplants.",
   },
   {
     id: "dr-rajesh-mehta",

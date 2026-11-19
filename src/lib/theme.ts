@@ -15,9 +15,9 @@ export const themeConfig = {
       light: '/logo-transparent.png',
       dark: '/logo-transparent.png',
       alt: 'Medibeeglobal Logo',
-      width: 1899,
-      height: 420,
-      aspectRatio: 4.52, // 1899 : 420
+      width: 1193,
+      height: 400,
+      aspectRatio: 2.98, // 1193 : 400
     },
     contact: {
       phone: PHONE_NUMBER,

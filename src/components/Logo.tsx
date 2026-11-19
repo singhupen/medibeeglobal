@@ -25,13 +25,10 @@ export default function Logo({
   asLink = false,
   href = '/',
   priority = false,
-  height = 36,
+  height = 44,
   alt = themeConfig.brand.logo.alt,
   onClick,
 }: LogoProps) {
-  // 4.52:1 aspect ratio based on 1899 x 420
-  const computedWidth = Math.round(height * themeConfig.brand.logo.aspectRatio);
-
   // Always use the transparent logo as requested
   const logoSrc: string = '/logo-transparent.png';
 
@@ -45,14 +42,14 @@ export default function Logo({
       <Image
         src={logoSrc}
         alt={alt}
-        width={computedWidth}
-        height={height}
+        width={themeConfig.brand.logo.width}
+        height={themeConfig.brand.logo.height}
         priority={priority}
-        className={`w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.03] ${imageClassName}`}
+        unoptimized
+        className={`w-auto object-contain select-none transition-transform duration-200 group-hover:scale-[1.02] ${imageClassName}`}
         style={{
           height: `${height}px`,
           width: 'auto',
-          aspectRatio: `${themeConfig.brand.logo.aspectRatio}`,
         }}
       />
     </div>
