@@ -57,7 +57,8 @@ export default function Navbar() {
               href="/"
               variant="plain"
               priority
-              height={36}
+              height={scrolled ? 42 : 48}
+              imageClassName="transition-all duration-300"
               onClick={() => setMobileOpen(false)}
             />
           </div>

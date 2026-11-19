@@ -14,7 +14,10 @@ import {
   ArrowRight, 
   ShieldCheck, 
   GraduationCap, 
-  Globe2 
+  Globe2,
+  User,
+  MessageCircle,
+  Phone
 } from 'lucide-react';
 import { doctorsData, Doctor } from '@/lib/data';
 import { useCaseModal } from '@/context/case-modal-context';
@@ -36,16 +39,22 @@ export default function DoctorsPage() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredDoctors = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
     return doctorsData.filter((doc) => {
       const matchesSpecialty =
         selectedSpecialty === 'All Specialties' || doc.specialty === selectedSpecialty;
-      const matchesSearch =
-        doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doc.hospital.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doc.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doc.qualifications.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        doc.specialty.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesSpecialty && matchesSearch;
+      if (!matchesSpecialty) return false;
+      if (!query) return true;
+      return (
+        (doc.name?.toLowerCase().includes(query) ?? false) ||
+        (doc.hospital?.toLowerCase().includes(query) ?? false) ||
+        (doc.city?.toLowerCase().includes(query) ?? false) ||
+        (doc.qualifications?.toLowerCase().includes(query) ?? false) ||
+        (doc.specialty?.toLowerCase().includes(query) ?? false) ||
+        (doc.role?.toLowerCase().includes(query) ?? false) ||
+        (doc.contact?.toLowerCase().includes(query) ?? false) ||
+        (doc.bio?.toLowerCase().includes(query) ?? false)
+      );
     });
   }, [selectedSpecialty, searchQuery]);
 
@@ -169,73 +178,145 @@ export default function DoctorsPage() {
                   className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-soft hover:shadow-card hover:border-primary-200 transition-all flex flex-col group"
                 >
                   {/* Card Header with Image and Badges */}
-                  <div className="relative h-60 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent">
-                    <img
-                      src={doctor.photo}
-                      alt={doctor.name}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent" />
+                  <div className="relative h-60 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-gray-800">
+                    {doctor.photo ? (
+                      <img
+                        src={doctor.photo}
+                        alt={doctor.name}
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-primary-900 via-primary-850 to-primary-950 text-white/40">
+                        <User className="w-20 h-20 text-white/20 mb-2" />
+                        <span className="text-xs uppercase tracking-wider text-white/50 font-semibold">Doctor Profile</span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/30 to-transparent pointer-events-none" />
                     
                     {doctor.badge && (
-                      <span className="absolute top-4 left-4 bg-accent-400 text-primary-950 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                      <span className="absolute top-4 left-4 bg-accent-400 text-primary-950 text-xs font-bold px-3 py-1 rounded-full shadow-sm z-10">
                         {doctor.badge}
                       </span>
                     )}
 
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <p className="text-xs uppercase tracking-wider text-accent-400 font-bold mb-1">
-                        {doctor.specialty}
-                      </p>
+                    <div className="absolute bottom-4 left-4 right-4 text-white z-10">
+                      {doctor.specialty && (
+                        <p className="text-xs uppercase tracking-wider text-accent-400 font-bold mb-1">
+                          {doctor.specialty}
+                        </p>
+                      )}
                       <h3 className="text-xl font-extrabold leading-snug">{doctor.name}</h3>
-                      <p className="text-xs text-white/80 line-clamp-1">{doctor.role}</p>
+                      {doctor.role && (
+                        <p className="text-xs text-white/80 line-clamp-1 mt-0.5">{doctor.role}</p>
+                      )}
                     </div>
                   </div>
 
                   {/* Card Body */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     {/* Hospital & City */}
-                    <div className="space-y-2 border-b border-gray-100 pb-4 text-sm">
-                      <div className="flex items-center gap-2 text-gray-700 font-medium">
-                        <Building2 className="w-4 h-4 text-primary-500 flex-shrink-0" />
-                        <span className="line-clamp-1">{doctor.hospital}</span>
+                    {(doctor.hospital || doctor.city) && (
+                      <div className="space-y-2 border-b border-gray-100 pb-4 text-sm">
+                        {doctor.hospital && (
+                          <div className="flex items-center gap-2 text-gray-700 font-medium">
+                            <Building2 className="w-4 h-4 text-primary-500 flex-shrink-0" />
+                            <span className="line-clamp-1">{doctor.hospital}</span>
+                          </div>
+                        )}
+                        {doctor.city && (
+                          <div className="flex items-center gap-2 text-gray-500 text-xs">
+                            <MapPin className="w-4 h-4 text-accent-500 flex-shrink-0" />
+                            <span>{doctor.city}{!doctor.city.toLowerCase().includes('india') && ', India'}</span>
+                          </div>
+                        )}
                       </div>
-                      <div className="flex items-center gap-2 text-gray-500 text-xs">
-                        <MapPin className="w-4 h-4 text-accent-500 flex-shrink-0" />
-                        <span>{doctor.city}, India</span>
-                      </div>
-                    </div>
+                    )}
 
-                    {/* Stats Pill Row */}
-                    <div className="grid grid-cols-2 gap-2 bg-gray-50 p-3 rounded-xl text-center">
-                      <div>
-                        <span className="block text-xs text-gray-400 font-medium">Experience</span>
-                        <span className="text-sm font-extrabold text-primary-600">
-                          {doctor.experienceYears}+ Years
-                        </span>
+                    {/* Direct Contact & WhatsApp Box */}
+                    {doctor.contact && (
+                      <div className="flex items-center justify-between bg-emerald-50/90 border border-emerald-200/80 rounded-xl px-3.5 py-2.5 shadow-xs transition-all hover:bg-emerald-100/70">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center flex-shrink-0">
+                            <Phone className="w-4 h-4 text-emerald-600" />
+                          </div>
+                          <div className="min-w-0">
+                            <span className="block text-[10px] uppercase font-bold text-emerald-700 tracking-wider">
+                              Contact / WhatsApp
+                            </span>
+                            <a
+                              href={`https://wa.me/${doctor.contact.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello, I would like to consult with ${doctor.name}`)}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs sm:text-sm font-extrabold text-emerald-950 hover:text-emerald-700 hover:underline tracking-wide truncate block"
+                              title="Click to chat on WhatsApp"
+                            >
+                              {doctor.contact}
+                            </a>
+                          </div>
+                        </div>
+                        <a
+                          href={`https://wa.me/${doctor.contact.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello, I would like to consult with ${doctor.name}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg flex items-center gap-1.5 transition-all shadow-xs flex-shrink-0 ml-2"
+                          title="Open WhatsApp"
+                        >
+                          <MessageCircle className="w-3.5 h-3.5" />
+                          <span>Chat</span>
+                        </a>
                       </div>
-                      <div className="border-l border-gray-200">
-                        <span className="block text-xs text-gray-400 font-medium">Cases Handled</span>
-                        <span className="text-sm font-extrabold text-gray-900">
-                          {doctor.surgeriesCount}
-                        </span>
+                    )}
+
+                    {/* Stats Pill Row (Experience & Cases Handled) */}
+                    {(doctor.experienceYears !== undefined || doctor.surgeriesCount) && (
+                      <div
+                        className={`grid gap-2 bg-gray-50 p-3 rounded-xl text-center ${
+                          doctor.experienceYears !== undefined && doctor.surgeriesCount
+                            ? 'grid-cols-2'
+                            : 'grid-cols-1'
+                        }`}
+                      >
+                        {doctor.experienceYears !== undefined && (
+                          <div>
+                            <span className="block text-xs text-gray-400 font-medium">Experience</span>
+                            <span className="text-sm font-extrabold text-primary-600">
+                              {doctor.experienceYears}+ Years
+                            </span>
+                          </div>
+                        )}
+                        {doctor.surgeriesCount && (
+                          <div className={doctor.experienceYears !== undefined ? 'border-l border-gray-200' : ''}>
+                            <span className="block text-xs text-gray-400 font-medium">Cases Handled</span>
+                            <span className="text-sm font-extrabold text-gray-900">
+                              {doctor.surgeriesCount}
+                            </span>
+                          </div>
+                        )}
                       </div>
-                    </div>
+                    )}
 
                     {/* Credentials & Bio */}
-                    <div className="space-y-2 text-xs">
-                      <div className="flex items-start gap-1.5 text-gray-700">
-                        <GraduationCap className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
-                        <span className="font-semibold line-clamp-1">{doctor.qualifications}</span>
+                    {(doctor.qualifications || doctor.fellowships || doctor.bio) && (
+                      <div className="space-y-2 text-xs">
+                        {doctor.qualifications && (
+                          <div className="flex items-start gap-1.5 text-gray-700">
+                            <GraduationCap className="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5" />
+                            <span className="font-semibold line-clamp-1">{doctor.qualifications}</span>
+                          </div>
+                        )}
+                        {doctor.fellowships && (
+                          <div className="flex items-start gap-1.5 text-gray-500">
+                            <Award className="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5" />
+                            <span className="line-clamp-1">{doctor.fellowships}</span>
+                          </div>
+                        )}
+                        {doctor.bio && (
+                          <p className="text-gray-600 line-clamp-2 pt-1 leading-relaxed">
+                            {doctor.bio}
+                          </p>
+                        )}
                       </div>
-                      <div className="flex items-start gap-1.5 text-gray-500">
-                        <Award className="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5" />
-                        <span className="line-clamp-1">{doctor.fellowships}</span>
-                      </div>
-                      <p className="text-gray-600 line-clamp-2 pt-1 leading-relaxed">
-                        {doctor.bio}
-                      </p>
-                    </div>
+                    )}
 
                     {/* CTA Actions */}
                     <div className="pt-3 border-t border-gray-100 flex items-center gap-2">
@@ -246,6 +327,18 @@ export default function DoctorsPage() {
                         <Sparkles className="w-3.5 h-3.5 text-accent-300" />
                         Request Opinion
                       </button>
+                      {doctor.contact && (
+                        <a
+                          href={`https://wa.me/${doctor.contact.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hello, I would like to consult with ${doctor.name}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-sm hover:shadow flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
+                          title={`Contact ${doctor.name} on WhatsApp`}
+                        >
+                          <MessageCircle className="w-4 h-4" />
+                          <span>WhatsApp</span>
+                        </a>
+                      )}
                       <button
                         onClick={openCaseModal}
                         className="px-3 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-semibold rounded-xl transition-colors cursor-pointer"
